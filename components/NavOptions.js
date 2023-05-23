@@ -44,11 +44,14 @@ const NavOptions = () => {
         horizontal
         renderItem={({ item }) => (
             <TouchableOpacity
-                onPress={() => navigation.navigate(item.screen)}
-                style={[styles.subContainer, {height: elementHeight*1.1, width: elementWidth - 15, backgroundColor: item.bg_color}]}
-                disabled={!origin}
+                onPress={() => {
+                    console.log('Pressed!')
+                    // navigation.navigate(item.screen)
+                }}
+                style={[styles.subContainer, {height: elementHeight*1.1, width: elementWidth - 15, backgroundColor: item.bg_color, padding: 15}]}
+                // disabled={!origin}
                 >
-                <View style={{flexDirection: 'column'}}>
+                <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     <View style= {styles.image}>
                         <Image
                             style={{width: elementWidth/2.5}}
@@ -60,6 +63,7 @@ const NavOptions = () => {
                 </View>
             </TouchableOpacity>
         )}
+
     />
   )
 }
@@ -77,9 +81,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        flex:5,
+        flex:10,
         alignItems: 'center',
         justifyContent: 'center',
+        // backgroundColor: 'red'
     },
     content: {
         flex: 2,
@@ -87,6 +92,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
     },
+    footer: {
+        height: 500
+    }
 });
 
 export default NavOptions

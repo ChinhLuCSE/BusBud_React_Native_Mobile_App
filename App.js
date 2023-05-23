@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { Provider } from 'react-redux'
 import store from './store';
-import HomeScreen from './screens/HomeScreen';
+
 import MapScreen from './screens/MapScreen';
 import { useFonts } from "expo-font";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -17,8 +17,10 @@ import StartingScreen2 from "./screens/StartingScreen2";
 import StartingScreen3 from './screens/StartingScreen3';
 import StartingScreen1 from './screens/StartingScreen1';
 import StartingScreen6 from './screens/StartingScreen6';
-
-
+import HomeScreen from './screens/HomeScreen';
+import Notifications from './screens/Notification';
+import Payments from './screens/Payments';
+import Setting from './screens/Setting';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -79,6 +81,28 @@ export default function App() {
               options={{ headerShown: false }}
             />
                */}
+              	
+              {/* <Stack.Screen
+                name="Notifications"
+                component={Notifications}
+                options={{
+                headerShown: false
+                }}
+              /> */}
+              <Stack.Screen
+              name="Setting"
+              component={Setting}
+              options={{
+              headerShown: false
+              }}
+              />
+              <Stack.Screen
+              name="Payments"
+              component={Payments}
+              options={{
+              headerShown: false
+              }}
+              />
               <Stack.Screen 
                 name='HomeScreen'
                 component={HomeScreen}
