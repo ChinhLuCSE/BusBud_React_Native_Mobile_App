@@ -47,7 +47,7 @@ export default function App() {
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
             <Stack.Navigator>
-               <Stack.Screen 
+               {/* <Stack.Screen 
                   name='StartingScreen1'
                   component={StartingScreen1}
                   options={{ headerShown: false }}
@@ -78,7 +78,7 @@ export default function App() {
               component={StartingScreen6}
               options={{ headerShown: false }}
             />
-              
+               */}
               <Stack.Screen 
                 name='HomeScreen'
                 component={HomeScreen}
@@ -86,13 +86,13 @@ export default function App() {
                   headerShown: false,
                 }}
               />
-              <Stack.Screen 
+              {/* <Stack.Screen 
                 name='MapScreen'
                 component={MapScreen}
                 options={{
                   headerShown: false,
                 }}
-              />
+              /> */}
             </Stack.Navigator>
           </KeyboardAvoidingView>
         </SafeAreaProvider>
