@@ -17,7 +17,9 @@ import StartingScreen2 from "./screens/StartingScreen2";
 import StartingScreen3 from './screens/StartingScreen3';
 import StartingScreen1 from './screens/StartingScreen1';
 import StartingScreen6 from './screens/StartingScreen6';
-
+import QR1 from './screens/QR1';
+import QR2 from './screens/QR2';
+import QR3 from './screens/QR3';
 
 
 export default function App() {
@@ -76,6 +78,21 @@ export default function App() {
              <Stack.Screen
               name="StartingScreen6"
               component={StartingScreen6}
+              options={{ headerShown: false }}
+            />
+              <Stack.Screen
+              name="QR1"
+              component={QR1}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="QR2"
+              component={QR2}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="QR3"
+              component={QR3}
               options={{ headerShown: false }}
             />
               
