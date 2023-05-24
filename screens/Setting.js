@@ -2,12 +2,19 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Button} fr
 import React, { useState, useEffect} from 'react';
 import { Color } from '../GlobalStyles';
 const ScreenWidth = Dimensions.get("window").width;
+import { useNavigation } from "@react-navigation/native";
 export default function Setting(){
     const [countPayments, setCountPayments] = useState(0);
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        console.log('Pressed!')
+                        navigation.navigate("HomeScreen");
+                        }}
+                >
                     <Image 
                         style={[styles.headerImage,{ width: 30}]} 
                         source={require('../assets/white-left-arrow.png')}

@@ -93,6 +93,13 @@ export default function App() {
                 }}
               />
               <Stack.Screen
+                name="Q1"
+                component={QR1}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
                 name="Setting"
                 component={Setting}
                 options={{ headerShown: false }}

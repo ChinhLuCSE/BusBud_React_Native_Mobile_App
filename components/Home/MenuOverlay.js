@@ -27,7 +27,10 @@ const MenuOverlay = (props) => {
           }}
           onPress={() => {
             console.log("Pressed!");
+            setIsMenuVisible(false);
+            navigation.navigate("Setting")
           }}
+          
         >
           <View style={{}}>
             <Image
@@ -61,6 +64,8 @@ const MenuOverlay = (props) => {
           }}
           onPress={() => {
             console.log("Pressed!");
+            setIsMenuVisible(false);
+            navigation.navigate("Notifications")
           }}
         >
           <View
@@ -100,16 +105,32 @@ const MenuOverlay = (props) => {
         <TouchableOpacity
           style={styles.element}
           onPress={() => {
+            setIsMenuVisible(false);
+            console.log('Pressed!')
             navigation.navigate("Payments");
           }}
         >
           <Text style={styles.textElement}>My Payment History</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.element}>
+        </TouchableOpacity >
+          
+        <TouchableOpacity style={styles.element}
+        onPress={() => {
+          setIsMenuVisible(false);
+          console.log('QR1!')
+          navigation.navigate("QR1");
+        }}
+        >
           <Text style={styles.textElement}>Payment</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.element}>
-          <Text style={styles.textElement}>Settings</Text>
+
+        <TouchableOpacity style={styles.element}
+          onPress={() => {
+            setIsMenuVisible(false);
+            console.log('Setting!')
+            navigation.navigate("Setting");
+          }}       
+        >
+          <Text style={styles.textElement}>Setting</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.element}
