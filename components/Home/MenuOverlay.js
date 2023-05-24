@@ -14,6 +14,7 @@ const MenuOverlay = (props) =>{
                     justifyContent: 'flex-start',
                     borderBottomWidth: 2,
                     paddingBottom: 10,
+                    alignItems:'center'
                 }}
                 onPress={() =>{console.log('Pressed!')}}
                 >

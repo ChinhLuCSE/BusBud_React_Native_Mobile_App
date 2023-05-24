@@ -22,7 +22,7 @@ const Map1 = () => {
         <Image
           style={styles.icon}
           contentFit="cover"
-          source={require("../assets/vector-4.png")}
+          source={require("../assets/right-arrow.png")}
         />
       </Pressable>
       <Image
