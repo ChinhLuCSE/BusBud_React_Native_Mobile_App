@@ -11,7 +11,7 @@ const data = [
         id: "50",
         title: "Bus 50", // vehicle type
         multiplier: 1, //cost
-        image: "",
+        image: require("../assets/bus.png"),
     },
     // {
     //     id: "8",
@@ -46,7 +46,7 @@ const RideOptionsCard = () => {
                     type='fontawesome'
                 />
             </TouchableOpacity>
-            <Text style={tw`text-center py-5 text-xl`}>Select a Bus - {travelTimeInformation?.distance?.text}</Text>
+            <Text style={tw`text-center py-5 text-xl`}>Get a Bus{travelTimeInformation?.distance?.text}</Text>
         </View>
 
         <FlatList 
@@ -58,26 +58,22 @@ const RideOptionsCard = () => {
                     style={tw`flex-row justify-between items-center px-10 ${id === selected?.id && "bg-gray-200"}`}>
                     <Image 
                         style={{
-                            width: 100,
-                            height: 100,
+                            width: 50,
+                            height: 50,
                             resizeMode: "contain"
                         }}
-                        source={{ uri: image }}
+                        source={image}
                     />
                     <View style={tw`-ml-6`}>
                         <Text style={tw`text-xl font-semibold`}>{title}</Text>
-                        <Text> {travelTimeInformation?.distance.text} Travel Time </Text>
+                        <Text>{travelTimeInformation?.distance.text}1 hours 30 mins </Text>
                     </View>
-                    <Text style={tw`text-xl `} >Money</Text>
+                    <Text style={tw`text-xl `} >7.000đ</Text>
                 </TouchableOpacity>
             )}
         />
 
-        <View>
-            <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
-                <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
-            </TouchableOpacity>
-        </View>
+        
     </SafeAreaView>
   )
 }
