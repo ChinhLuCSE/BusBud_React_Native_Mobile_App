@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
@@ -9,15 +9,15 @@ const Map2 = () => {
 
   return (
     <View style={styles.Map2}>
-      <View style={styles.Map2Child} />
-      <View style={styles.moveParent}>
+      <View style={[styles.Map2Child, styles.iphone11Position]} />
+      <View style={[styles.moveParent, styles.iphone11Position]}>
         <Text style={[styles.move, styles.moveTypo]}>Move</Text>
         <Text style={[styles.with, styles.moveTypo]}>with</Text>
         <Text style={[styles.safety, styles.moveTypo]}>Safety</Text>
       </View>
       <Pressable
         style={styles.wrapper}
-        onPress={() => navigation.navigate("IPhone11ProMax33")}
+        onPress={() => navigation.navigate("Map1")}
       >
         <Image
           style={styles.icon}
@@ -32,9 +32,9 @@ const Map2 = () => {
         <View style={[styles.groupChild, styles.groupChildLayout]} />
         <Text style={styles.done}>Done</Text>
       </Pressable>
-      <Text style={[styles.trmXeBus, styles.textClr]}>{`Trạm xe bus - 
-“Tên của trạm xe này”
-`}</Text>
+      <Text style={[styles.trmXeBus, styles.textClr]}>
+        {"Trạm xe bus -\n“Tên của trạm xe này”"}
+      </Text>
       <View style={styles.groupParent}>
         <View style={styles.locationSavedParent}>
           <View style={[styles.locationSaved, styles.locationPosition]}>
@@ -79,11 +79,18 @@ const Map2 = () => {
   );
 };
 
+const screenWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
+  iphone11Position: {
+    left: 0,
+    width: screenWidth,
+    position: "absolute",
+  },
   moveTypo: {
-    height: 135,
+    height: 0.15 * screenWidth,
     color: Color.white,
-    fontSize: 144,
+    fontSize: 0.16 * screenWidth,
     textAlign: "left",
     fontFamily: FontFamily.robotoBold,
     fontWeight: "700",
@@ -91,8 +98,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   groupChildLayout: {
-    height: 58,
-    width: 341,
+    height: 0.065 * screenWidth,
+    width: 0.82 * screenWidth,
     position: "absolute",
   },
   textClr: {
@@ -101,43 +108,43 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   locationPosition: {
-    bottom: "0%",
-    left: "0%",
+    bottom: 0,
+    left: 0,
     position: "absolute",
   },
   nameTypo: {
-    lineHeight: 28,
+    lineHeight: 0.037 * screenWidth,
     fontSize: FontSize.hint14ptLightLexend_size,
-    left: "31.42%",
+    left: 0.3142 * screenWidth,
     textAlign: "left",
     position: "absolute",
   },
   Map2Child: {
     backgroundColor: Color.oldlace,
-    width: 414,
+    width: screenWidth,
     left: 0,
     top: 0,
     position: "absolute",
-    height: 896,
+    height: 0.896 * screenWidth,
   },
   move: {
-    width: 356,
+    width: 0.859 * screenWidth,
     top: 0,
   },
   with: {
-    top: 109,
-    width: 273,
+    top: 0.122 * screenWidth,
+    width: 0.659 * screenWidth,
   },
   safety: {
-    top: 217,
-    width: 414,
+    top: 0.242 * screenWidth,
+    width: screenWidth,
   },
   moveParent: {
-    top: 376,
-    height: 352,
+    top: 0.418 * screenWidth,
+    height: 0.392 * screenWidth,
     opacity: 0.3,
     display: "none",
-    width: 414,
+    width: screenWidth,
     left: 0,
     position: "absolute",
   },
@@ -146,10 +153,10 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   wrapper: {
-    left: 31,
-    top: 80,
-    width: 19,
-    height: 19,
+    left: 0.075 * screenWidth,
+    top: 0.089 * screenWidth,
+    width: 0.046 * screenWidth,
+    height: 0.046 * screenWidth,
     position: "absolute",
   },
   groupChild: {
@@ -159,37 +166,37 @@ const styles = StyleSheet.create({
     top: 0,
   },
   done: {
-    top: 16,
-    left: 144,
+    top: 0.018 * screenWidth,
+    left: 0.348 * screenWidth,
     fontSize: FontSize.size_2xl_6,
     color: Color.aliceblue,
-    width: 53,
-    height: 25,
+    width: 0.128 * screenWidth,
+    height: 0.061 * screenWidth,
     textAlign: "left",
     fontFamily: FontFamily.robotoBold,
     fontWeight: "700",
     position: "absolute",
   },
   rectangleParent: {
-    top: 776,
-    left: 37,
+    top: 0.867 * screenWidth,
+    left: 0.089 * screenWidth,
     shadowColor: "rgba(0, 0, 0, 0.25)",
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 0.035 * screenWidth,
     },
-    shadowRadius: 4,
+    shadowRadius: 0.035 * screenWidth,
     elevation: 4,
     shadowOpacity: 1,
   },
   trmXeBus: {
-    top: 73,
-    left: 66,
+    top: 0.081 * screenWidth,
+    left: 0.16 * screenWidth,
     fontSize: FontSize.size_9xl,
     fontWeight: "500",
     fontFamily: FontFamily.robotoMedium,
-    width: 282,
-    height: 64,
+    width: 0.682 * screenWidth,
+    height: 0.143 * screenWidth,
   },
   iconplace: {
     width: "19.91%",
@@ -236,9 +243,9 @@ const styles = StyleSheet.create({
     color: Color.dimgray,
   },
   busIcon: {
-    left: 4,
-    width: 36,
-    height: 45,
+    left: 0.01 * screenWidth,
+    width: 0.087 * screenWidth,
+    height: 0.111 * screenWidth,
     top: 0,
     position: "absolute",
   },
@@ -271,8 +278,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.aliceblue,
     flex: 1,
     overflow: "hidden",
-    height: 896,
-    width: "100%",
+    height: 0.896 * screenWidth,
+    width: screenWidth,
   },
 });
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
@@ -41,19 +41,21 @@ const Map1 = () => {
   );
 };
 
+const screenWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
   iphone11Position: {
     left: 0,
-    width: 414,
+    width: screenWidth,
     position: "absolute",
   },
   moveTypo: {
-    height: 135,
+    height: 0.15 * screenWidth,
     textAlign: "left",
     color: Color.white,
     fontFamily: FontFamily.robotoBold,
     fontWeight: "700",
-    fontSize: 144,
+    fontSize: 0.15 * screenWidth,
     left: 0,
     position: "absolute",
   },
@@ -65,66 +67,66 @@ const styles = StyleSheet.create({
   },
   Map1Child: {
     backgroundColor: Color.oldlace,
-    width: 414,
+    width: screenWidth,
     top: 0,
-    height: 896,
+    height: 0.9 * screenWidth,
   },
   move: {
-    width: 356,
+    width: 0.86 * screenWidth,
     top: 0,
   },
   with: {
-    top: 109,
-    width: 273,
+    top: 0.13 * screenWidth,
+    width: 0.66 * screenWidth,
   },
   safety: {
-    top: 217,
-    width: 414,
+    top: 0.27 * screenWidth,
+    width: screenWidth,
   },
   moveParent: {
-    top: 376,
-    height: 352,
+    top: 0.42 * screenWidth,
+    height: 0.39 * screenWidth,
     display: "none",
     opacity: 0.3,
-    width: 414,
+    width: screenWidth,
   },
   icon: {
     height: "100%",
     width: "100%",
   },
   wrapper: {
-    left: 31,
-    top: 80,
-    width: 19,
-    height: 19,
+    left: 0.075 * screenWidth,
+    top: 0.09 * screenWidth,
+    width: 0.045 * screenWidth,
+    height: 0.045 * screenWidth,
     position: "absolute",
   },
   Map1Item: {
-    top: 162,
-    height: 734,
-    width: 414,
+    top: 0.18 * screenWidth,
+    height: 0.82 * screenWidth,
+    width: screenWidth,
   },
   busStopsAround: {
-    top: 73,
-    left: 71,
-    fontSize: FontSize.size_9xl,
+    top: 0.08 * screenWidth,
+    left: 0.17 * screenWidth,
+    fontSize: 0.06 * screenWidth,
     color: Color.dimgray,
-    width: 272,
-    height: 33,
+    width: 0.65 * screenWidth,
+    height: 0.036 * screenWidth,
   },
   bnNy: {
-    top: 253,
-    left: 115,
-    fontSize: FontSize.paragraph20ptLightLexend_size,
+    top: 0.29 * screenWidth,
+    left: 0.28 * screenWidth,
+    fontSize: 0.035 * screenWidth,
     color: Color.black,
-    width: 188,
-    height: 129,
+    width: 0.45 * screenWidth,
+    height: 0.31 * screenWidth,
   },
   Map1: {
     backgroundColor: Color.aliceblue,
     flex: 1,
     overflow: "hidden",
-    height: 896,
+    height: 0.9 * screenWidth,
     width: "100%",
   },
 });
