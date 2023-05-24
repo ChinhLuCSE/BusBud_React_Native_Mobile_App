@@ -16,12 +16,19 @@ const data = [
         icon: "school",
         location: "School",
         destination: "Dai hoc Bach Khoa co so 2 DHQG",
+    }, 
+    {
+        id: "3",
+        icon: "school",
+        location: "School",
+        destination: "Dai hoc Bach Khoa co so 2 DHQG",
     }
 ];
 
 const NavFavourites = () => {
     const navigation = useNavigation();
   return (
+
     <FlatList 
         data={data}
         keyExtractor={(item) => item.id}
@@ -52,4 +59,8 @@ const NavFavourites = () => {
 
 export default NavFavourites
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    footer: {
+        height: 500,
+    }
+})

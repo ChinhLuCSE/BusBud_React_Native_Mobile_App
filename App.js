@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { Provider } from 'react-redux'
 import store from './store';
-import HomeScreen from './screens/HomeScreen';
+
 import MapScreen from './screens/MapScreen';
 import { useFonts } from "expo-font";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -43,6 +43,7 @@ export default function App() {
  }
   return (
     <Provider store={store}>
+  
       <NavigationContainer>
         <SafeAreaProvider>
           <KeyboardAvoidingView 
@@ -52,7 +53,7 @@ export default function App() {
           >
             
             <Stack.Navigator>
-               <Stack.Screen 
+               {/* <Stack.Screen 
                   name='StartingScreen1'
                   component={StartingScreen1}
                   options={{ headerShown: false }}
@@ -116,14 +117,15 @@ export default function App() {
                   headerShown: false,
                 }}
               />
-              <Stack.Screen 
+              {/* <Stack.Screen 
                 name='MapScreen'
                 component={MapScreen}
                 options={{
                   headerShown: false,
                 }}
-              />
+              /> */}
             </Stack.Navigator>
+            
             
           </KeyboardAvoidingView>
         </SafeAreaProvider>
