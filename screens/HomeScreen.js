@@ -10,6 +10,7 @@ import NavFavourites from '../components/NavFavourites';
 import Input from '../components/Home/Input';
 import { Border, Color } from '../GlobalStyles';
 import MenuOverlay from '../components/Home/MenuOverlay';
+import NavFavourites_HomeScreen from '../components/NavFavourite_HomeScreen';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -103,7 +104,7 @@ const HomeScreen = () => {
         <View style={styles.nav}>
           <NavOptions />
           <Text style={styles.favorite}>Favorites</Text>
-          <NavFavourites/>
+          <NavFavourites_HomeScreen />
         </View>
       </View>
       
