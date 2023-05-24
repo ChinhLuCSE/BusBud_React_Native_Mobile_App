@@ -11,6 +11,18 @@ import NavFavourites from '../components/NavFavourites';
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
+  dispatch(
+    setOrigin({
+      location: { "lat": 37.771707, "lng": -122.4053769 },
+      // description: data.description,
+    })
+  );
+
+  dispatch(setDestination({
+    location: { "lat": 37.3317876, "lng": -122.0054812 },
+    // description: data.description,
+  }))
+
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>

@@ -46,7 +46,7 @@ const RideOptionsCard = () => {
                     type='fontawesome'
                 />
             </TouchableOpacity>
-            <Text style={tw`text-center py-5 text-xl`}>Select a Bus - {travelTimeInformation?.distance?.text}</Text>
+            <Text style={tw`text-center py-5 text-xl`}>Select a Bus{travelTimeInformation?.distance?.text}</Text>
         </View>
 
         <FlatList 
@@ -73,11 +73,7 @@ const RideOptionsCard = () => {
             )}
         />
 
-        <View>
-            <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
-                <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
-            </TouchableOpacity>
-        </View>
+        
     </SafeAreaView>
   )
 }

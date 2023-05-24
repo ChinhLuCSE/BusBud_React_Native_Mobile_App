@@ -40,6 +40,7 @@ export default function App() {
                 }}
               />
             </Stack.Navigator>
+            
           </KeyboardAvoidingView>
         </SafeAreaProvider>
       </NavigationContainer>
