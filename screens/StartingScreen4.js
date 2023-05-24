@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
@@ -24,7 +24,8 @@ const StartingScreen4 = () => {
         What’s your name?
       </Text>
       <View style={[styles.firstParent, styles.parentLayout]}>
-        <Text style={[styles.first, styles.lastTypo]}>First</Text>
+        <TextInput style={[styles.first, styles.lastTypo]}
+        placeholder="First"></TextInput>
         <Image
           style={[styles.groupChild, styles.childPosition]}
           contentFit="cover"
@@ -32,7 +33,8 @@ const StartingScreen4 = () => {
         />
       </View>
       <View style={[styles.lastParent, styles.parentLayout]}>
-        <Text style={[styles.last, styles.lastTypo]}>Last</Text>
+        <TextInput style={[styles.last, styles.lastTypo]}
+        placeholder="Last"></TextInput>
         <Image
           style={[styles.groupChild, styles.childPosition]}
           contentFit="cover"
@@ -41,7 +43,7 @@ const StartingScreen4 = () => {
       </View>
       <Pressable
         style={styles.wrapper}
-        onPress={() => navigation.navigate("StartingScreen3")}
+        onPress={() => navigation.navigate("StartingScreen1")}
       >
         <Image
           style={styles.icon}
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     textAlign: "left",
     left: 0,
-    top: 0,
+    top: 11,
     position: "absolute",
   },
   startingScreen4Child: {
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     height: 896,
   },
   startingScreen4Item: {
-    top: 776,
+    top: 750,
     borderRadius: Border.br_3xs,
     backgroundColor: Color.primary700,
     shadowColor: "rgba(0, 0, 0, 0.25)",
@@ -136,7 +138,7 @@ const styles = StyleSheet.create({
     width: 414,
   },
   next: {
-    top: 792,
+    top: 765,
     left: 180,
     fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
     color: Color.aliceblue,

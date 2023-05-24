@@ -1,11 +1,12 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
-const StartingScreen3 = () => {
+const StartingScreen3 = ({route=0 }) => {
   const navigation = useNavigation();
+  const {number} = route.params;
 
   return (
     <View style={styles.startingScreen3}>
@@ -23,7 +24,7 @@ const StartingScreen3 = () => {
       <Text
         style={[styles.enterThe4Digit, styles.textLayout]}
       >{`Enter the 4-digit code sent to you at `}</Text>
-      <Text style={[styles.text, styles.textTypo]}>+81 394793435.</Text>
+      <Text style={[styles.text, styles.textTypo]}>+81 {number}.</Text>
       <View style={[styles.startingScreen3Inner, styles.text1Layout]}>
         <View style={[styles.groupParent, styles.text1Layout]}>
           <View style={[styles.parent, styles.groupLayout]}>
@@ -63,7 +64,7 @@ const StartingScreen3 = () => {
       <Text style={[styles.resendCode, styles.textTypo]}>Resend Code</Text>
       <Pressable
         style={styles.wrapper}
-        onPress={() => navigation.navigate("StartingScreen2")}
+        onPress={() => navigation.navigate("StartingScreen1")}
       >
         <Image
           style={styles.icon}
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     height: 896,
   },
   startingScreen3Item: {
-    top: 776,
+    top: 750,
     borderRadius: Border.br_3xs,
     backgroundColor: Color.primary700,
     shadowColor: "rgba(0, 0, 0, 0.25)",
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   next: {
-    top: 792,
+    top: 765,
     left: 180,
     color: Color.aliceblue,
     width: 55,
@@ -196,8 +197,8 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.hint14ptLightLexend,
     color: Color.gray400,
     width: 26,
-    height: 45,
-    lineHeight: 28,
+    height: 49,
+    lineHeight: 40,
     textAlign: "left",
     top: 0,
   },

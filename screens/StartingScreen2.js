@@ -12,14 +12,14 @@ const StartingScreen2 = () => {
       <View style={[styles.startingScreen2Child, styles.moveParentPosition]} />
       <Pressable
         style={[styles.startingScreen2Item, styles.byClickingOnLayout]}
-        onPress={() => navigation.navigate("StartingScreen3")}
+        onPress={() => navigation.navigate("StartingScreen4")}
       />
       <View style={[styles.moveParent, styles.moveParentPosition]}>
         <Text style={[styles.move, styles.moveTypo]}>Move</Text>
         <Text style={[styles.with, styles.moveTypo]}>with</Text>
         <Text style={[styles.safety, styles.moveTypo]}>Safety</Text>
       </View>
-      <Text style={styles.next}>Next</Text>
+      <Text style={styles.next }>Next</Text>
       <Text style={styles.chooseAnAccount}>Choose an account</Text>
       <Text style={[styles.google, styles.googleTypo]}>Google</Text>
       <Text style={[styles.facebook, styles.googleTypo]}>Facebook</Text>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     left: 0,
   },
   startingScreen2Item: {
-    top: 776,
+    top: 750,
     borderRadius: Border.br_3xs,
     backgroundColor: Color.primary700,
     shadowColor: "rgba(0, 0, 0, 0.25)",
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     width: 414,
   },
   next: {
-    top: 792,
+    top: 765,
     left: 179,
     color: Color.aliceblue,
     width: 55,

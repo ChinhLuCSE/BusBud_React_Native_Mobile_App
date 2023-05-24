@@ -1,12 +1,16 @@
-import * as React from "react";
+import React, { useState } from 'react';
+
 import { Image } from "expo-image";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const StartingScreen1 = () => {
-  // const navigation = useNavigation();
-
+  const navigation = useNavigation();
+  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (text) => {
+    setInputValue(text);
+  };
   return (
     <View style={styles.startingScreen1}>
       <Image
@@ -16,7 +20,7 @@ const StartingScreen1 = () => {
       />
       <Pressable
         style={[styles.startingScreen1Item, styles.startingScreen1ItemPosition]}
-        onPress={() => navigation.navigate("StartingScreen3")}
+        onPress={() => navigation.navigate("StartingScreen3", { number: inputValue || null})}
       />
       <View style={[styles.moveParent, styles.moveParentPosition]}>
         <Text style={[styles.move, styles.moveTypo]}>Move</Text>
@@ -39,7 +43,14 @@ const StartingScreen1 = () => {
         </Text>
       </Pressable>
       <Text style={[styles.text, styles.textTypo]}>+81</Text>
-      <Text style={[styles.text1, styles.text1Clr]}>394793435</Text>
+      
+      <TextInput
+        style={[styles.text1, styles.text1Clr]}
+        onChangeText={handleInputChange}
+        value={inputValue}
+        keyboardType="numeric"
+      />
+        
       <Image
         style={styles.startingScreen1Inner}
         contentFit="cover"
@@ -106,7 +117,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   textTypo: {
-    height: 24,
+    height: 29,
     fontFamily: FontFamily.robotoMedium,
     fontWeight: "500",
     fontSize: FontSize.size_5xl,
@@ -128,7 +139,7 @@ const styles = StyleSheet.create({
     height: 896,
   },
   startingScreen1Item: {
-    top: 776,
+    top: 750,
     borderRadius: Border.br_3xs,
     backgroundColor: Color.primary700,
     shadowColor: "rgba(0, 0, 0, 0.25)",
@@ -162,7 +173,7 @@ const styles = StyleSheet.create({
     width: 414,
   },
   next: {
-    top: 792,
+    top: 765,
     left: 179,
     color: Color.aliceblue,
     width: 55,
@@ -173,10 +184,10 @@ const styles = StyleSheet.create({
   },
   enterYourMobile: {
     top: 131,
-    left: 28,
+    left: 20,
     fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
     color: Color.primary900,
-    width: 374,
+    width: 370,
     position: "absolute",
   },
   orConnectWithSocial: {
@@ -197,11 +208,11 @@ const styles = StyleSheet.create({
   text1: {
     left: 176,
     width: 195,
-    height: 24,
+    height: 29,
     fontFamily: FontFamily.robotoMedium,
     fontWeight: "500",
     fontSize: FontSize.size_5xl,
-    top: 197,
+    top: 200,
   },
   startingScreen1Inner: {
     top: 224,
