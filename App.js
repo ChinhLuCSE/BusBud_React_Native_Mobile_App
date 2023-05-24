@@ -41,6 +41,7 @@ export default function App() {
  }
   return (
     <Provider store={store}>
+  
       <NavigationContainer>
         <SafeAreaProvider>
           <KeyboardAvoidingView 
@@ -89,7 +90,7 @@ export default function App() {
                 headerShown: false
                 }}
               /> */}
-              <Stack.Screen
+              {/* <Stack.Screen
               name="Setting"
               component={Setting}
               options={{
@@ -102,7 +103,7 @@ export default function App() {
               options={{
               headerShown: false
               }}
-              />
+              /> */}
               <Stack.Screen 
                 name='HomeScreen'
                 component={HomeScreen}
@@ -118,6 +119,7 @@ export default function App() {
                 }}
               /> */}
             </Stack.Navigator>
+            
           </KeyboardAvoidingView>
         </SafeAreaProvider>
       </NavigationContainer>

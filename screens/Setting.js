@@ -124,7 +124,7 @@ export default function Setting(){
                     <Text style={{
                         fontFamily: 'Lexend_light',
                         fontSize: 14}}
-                    >Controlyour account security with 2-step verification</Text>
+                    >Control your account security with 2-step verification</Text>
                 </View>
                 <TouchableOpacity>
                     <Text style={{
@@ -133,7 +133,7 @@ export default function Setting(){
                         fontSize: 20,
                         color: Color.feedbackError,                    
                         }}>Sign Out
-                    r</Text>
+                    </Text>
                 </TouchableOpacity>
 
             </View>
