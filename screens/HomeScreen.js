@@ -93,6 +93,7 @@ const HomeScreen = () => {
                 fontSize: 14,
                 fontFamily: "Lexend_light",
                 borderRadius: 10,
+                borderWidth: 1
               },
             }}
           />
