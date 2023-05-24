@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const StartingScreen1 = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <View style={styles.startingScreen1}>

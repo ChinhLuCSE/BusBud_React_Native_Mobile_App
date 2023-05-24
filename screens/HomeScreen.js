@@ -37,7 +37,10 @@ const HomeScreen = () => {
       <View style={styles.header}>
 
       <TouchableOpacity
-        onPress={toggleMenu}
+        onPress={()=>{
+          console.log("Press")
+          toggleMenu();
+        }}
       >
         <Image style={{width: 30, marginBottom: 10}}
           source={require('../assets/menu-button.png')}
