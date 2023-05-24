@@ -20,6 +20,8 @@ import StartingScreen6 from './screens/StartingScreen6';
 import QR1 from './screens/QR1';
 import QR2 from './screens/QR2';
 import QR3 from './screens/QR3';
+import Map1 from './screens/Map1';
+import Map2 from './screens/Map2';
 
 
 export default function App() {
@@ -48,6 +50,7 @@ export default function App() {
             style={{ flex: 1 }}
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
+            
             <Stack.Navigator>
                <Stack.Screen 
                   name='StartingScreen1'
@@ -80,6 +83,16 @@ export default function App() {
               component={StartingScreen6}
               options={{ headerShown: false }}
             />
+            <Stack.Screen 
+                  name='Map1'
+                  component={Map1}
+                  options={{ headerShown: false }}
+               />
+               <Stack.Screen 
+                  name='Map2'
+                  component={Map2}
+                  options={{ headerShown: false }}
+               />
               <Stack.Screen
               name="QR1"
               component={QR1}
@@ -91,7 +104,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="QR3"
+              name="QR3" 
               component={QR3}
               options={{ headerShown: false }}
             />
