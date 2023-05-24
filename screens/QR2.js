@@ -17,7 +17,7 @@ const QR2 = () => {
       </View>
       <Pressable
         style={styles.wrapper}
-        onPress={() => navigation.navigate("IPhone11ProMax35")}
+        onPress={() => navigation.navigate("QR1")}
       >
         <Image
           style={styles.icon}
@@ -44,7 +44,7 @@ const QR2 = () => {
       </Text>
       <Pressable
         style={[styles.rectangleParent, styles.groupChildLayout]}
-        onPress={() => navigation.navigate("IPhone11ProMax37")}
+        onPress={() => navigation.navigate("QR3")}
       >
         <View style={[styles.groupChild, styles.groupChildLayout]} />
         <Text style={[styles.done, styles.doneTypo]}>Done</Text>
@@ -55,7 +55,7 @@ const QR2 = () => {
 
 const styles = StyleSheet.create({
   moveTypo: {
-    height: 135,
+    height: '15%',
     color: Color.white,
     fontFamily: FontFamily.robotoBold,
     fontWeight: "700",
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     color: Color.primary900,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: 28,
+    lineHeight: 28, 
     fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
     textAlign: "left",
     position: "absolute",
@@ -105,12 +105,12 @@ const styles = StyleSheet.create({
     lineHeight: 28,
   },
   QR2Child: {
-    width: 414,
+    width: '100%', // Sử dụng đơn vị động
+    height: '100%', // Sử dụng đơn vị động
     backgroundColor: Color.white,
     left: 0,
     top: 0,
     position: "absolute",
-    height: 896,
   },
   move: {
     width: 356,
@@ -138,10 +138,10 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   wrapper: {
-    left: 19,
-    top: 45,
-    width: 19,
-    height: 19,
+    left: '5%', // Sử dụng đơn vị động
+    top: '5%', // Sử dụng đơn vị động
+    width: '5%', // Sử dụng đơn vị động
+    height: '5%', // Sử dụng đơn vị động
     position: "absolute",
   },
   payment: {
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
   },
   QR2: {
     backgroundColor: Color.aliceblue,
-    flex: 1,
+    flex: 1, // Sử dụng flexbox để co dãn tự động
     overflow: "hidden",
     height: 896,
     width: "100%",

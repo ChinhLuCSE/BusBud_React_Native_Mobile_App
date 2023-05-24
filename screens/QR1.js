@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
@@ -37,7 +37,7 @@ const QR1 = () => {
       />
       <Pressable
         style={styles.image3}
-        onPress={() => navigation.navigate("IPhone11ProMax36")}
+        onPress={() => navigation.navigate("QR2")}
       >
         <Image
           style={styles.icon}
@@ -60,140 +60,142 @@ const QR1 = () => {
   );
 };
 
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   moveParentPosition: {
     left: 0,
-    width: 414,
-    position: "absolute",
+    width: '100%',
+    position: 'absolute',
   },
   moveTypo: {
-    height: 135,
-    textAlign: "left",
-    color: Color.white,
-    fontFamily: FontFamily.robotoBold,
-    fontWeight: "700",
-    fontSize: 144,
+    height: '15%',
+    textAlign: 'left',
+    color: '#fff',
+    fontFamily: 'Roboto-Bold',
+    fontWeight: '700',
+    fontSize: Math.min(windowWidth, windowHeight) * 0.1, // Điều chỉnh kích thước phông chữ dựa trên kích thước nhỏ hơn của cửa sổ
     left: 0,
-    position: "absolute",
+    position: 'absolute',
   },
   accountBalanceWalletPosition: {
-    left: 67,
-    position: "absolute",
+    left: '16%',
+    position: 'absolute',
   },
   textTypo: {
-    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
-    top: 811,
-    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
-    fontWeight: "600",
+    fontSize: Math.min(windowWidth, windowHeight) * 0.04, // Điều chỉnh kích thước phông chữ dựa trên kích thước nhỏ hơn của cửa sổ
+    top: windowHeight * 0.9,
+    fontFamily: 'h1Header136ptSemiBoldLexend',
+    fontWeight: '600',
     lineHeight: 28,
-    textAlign: "left",
-    position: "absolute",
+    textAlign: 'left',
+    position: 'absolute',
   },
-  QR1Child: {
-    backgroundColor: Color.white,
-    width: 414,
+    QR1Child: {
+    backgroundColor: '#fff',
+    width: '100%',
+    height: '100%',
+    },
+    move: {
+    width: '86%',
     top: 0,
-    height: 896,
-  },
-  move: {
-    width: 356,
-    top: 0,
-  },
-  with: {
-    top: 109,
-    width: 273,
-  },
-  safety: {
-    top: 217,
-    width: 414,
-  },
-  moveParent: {
-    top: 376,
-    height: 352,
+    },
+    with: {
+    top: '12%',
+    width: '66%',
+    },
+    safety: {
+    top: '24%',
+    width: '100%',
+    },
+    moveParent: {
+    top: '42%',
+    height: '39%',
     display: "none",
     opacity: 0.3,
-    width: 414,
-  },
-  icon: {
+    width: '100%',
+    },
+    icon: {
     height: "100%",
     width: "100%",
-  },
-  wrapper: {
-    left: 17,
-    top: 46,
-    width: 19,
-    height: 19,
+    },
+    wrapper: {
+    left: '4%',
+    top: '5%',
+    width: '4.6%',
+    height: '2.2%',
     position: "absolute",
-  },
-  payment: {
-    top: 38,
-    left: 60,
-    fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
-    color: Color.primary900,
-    width: 272,
-    height: 33,
-    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
+    },
+    payment: {
+    top: '4%',
+    left: '14%',
+    fontSize: Math.min(windowWidth, windowHeight) * 0.05, // adjust font size based on smaller dimension
+    color: "#2f2f2f",
+    width: '65%',
+    height: '4%',
+    fontFamily: 'h1Header136ptSemiBoldLexend',
     fontWeight: "600",
     lineHeight: 28,
     textAlign: "left",
     position: "absolute",
-  },
-  QR1Item: {
-    top: 98,
-    left: 26,
-    borderRadius: Border.br_3xl,
+    },
+    QR1Item: {
+    top: '11%',
+    left: '6%',
+    borderRadius: 50,
     backgroundColor: "#eff1f5",
     borderStyle: "solid",
     borderColor: "#101828",
     borderWidth: 1,
-    width: 359,
-    height: 663,
+    width: '88%',
+    height: '72%',
     position: "absolute",
-  },
-  QR1Inner: {
-    top: 290,
-    width: 278,
-    height: 318,
-  },
-  image3: {
-    left: 91,
-    top: 334,
-    width: 229,
-    height: 229,
+    },
+    QR1Inner: {
+    top: '32%',
+    width: '67%',
+    aspectRatio: 1, // set to keep aspect ratio
+    },
+    image3: {
+    left: '22%',
+    top: '37%',
+    width: '55%',
+    height: '26%',
     position: "absolute",
-  },
-  rectangleView: {
-    top: 788,
-    left: 41,
-    borderRadius: Border.br_3xs,
-    backgroundColor: Color.primary700,
-    width: 329,
-    height: 67,
+    },
+    rectangleView: {
+    top: '88%',
+    left: '10%',
+    borderRadius: 20,
+    backgroundColor: "#2f2f2f",
+    width: '80%',
+    height: '7.5%',
     position: "absolute",
-  },
-  accountBalanceWallet: {
-    top: 797,
-    width: 50,
-    height: 50,
+    },
+    accountBalanceWallet: {
+    top: '89%',
+    maxWidth: '15%',
+    maxHeight: '15%',
     overflow: "hidden",
-  },
-  balance: {
-    left: 126,
-    color: Color.gray_100,
-    width: 97,
-    height: 36,
-  },
-  text: {
-    left: 223,
-    color: Color.yellow,
-  },
-  QR1: {
-    backgroundColor: Color.aliceblue,
+    },
+    balance: {
+    left: '30%',
+    color: "#bcbcbc",
+    width: '23%',
+    height: '4%',
+    },
+    text: {
+    left: '54%',
+    color: "#e8b517",
+    },
+    QR1: {
+    backgroundColor: "#F0F2F5",
     flex: 1,
     overflow: "hidden",
-    height: 896,
-    width: "100%",
-  },
-});
-
-export default QR1;
+    height: '100%',
+    width: '100%',
+    },
+    });
+    
+    export default QR1;
