@@ -60,6 +60,9 @@ const QR1 = () => {
   );
 };
 
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   moveParentPosition: {
     left: 0,
