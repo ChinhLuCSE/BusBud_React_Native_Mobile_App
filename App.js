@@ -23,6 +23,10 @@ import QR2 from "./screens/QR2";
 import QR3 from "./screens/QR3";
 import Map1 from "./screens/Map1";
 import Map2 from "./screens/Map2";
+import Setting from "./screens/Setting";
+import Notifications from "./screens/Notification";
+import Payments from "./screens/Payments"
+import AccountSetting from './screens/AccountSetting'
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -122,6 +126,37 @@ export default function App() {
                   headerShown: false,
                 }}
               /> */}
+              <Stack.Screen 
+                  name='StartingScreen1'
+                  component={StartingScreen1}
+                  options={{ headerShown: false }}
+               />
+                <Stack.Screen
+              name="StartingScreen2"
+              component={StartingScreen2}
+              options={{ headerShown: false }}
+               />
+              
+               <Stack.Screen
+              name="StartingScreen3"
+              component={StartingScreen3}
+              options={{ headerShown: false }}
+               />
+                <Stack.Screen
+              name="StartingScreen4"
+              component={StartingScreen4}
+              options={{ headerShown: false }}
+            />
+               <Stack.Screen
+              name="StartingScreen5"
+              component={StartingScreen5}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="StartingScreen6"
+              component={StartingScreen6}
+              options={{ headerShown: false }}
+            />
               <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
@@ -129,6 +164,26 @@ export default function App() {
                   headerShown: false,
                 }}
               />
+              <Stack.Screen 
+                  name='Setting'
+                  component={Setting}
+                  options={{ headerShown: false }}
+               />
+               <Stack.Screen 
+                  name='Notifications'
+                  component={Notifications}
+                  options={{ headerShown: false }}
+               />
+               <Stack.Screen 
+                  name='Payments'
+                  component={Payments}
+                  options={{ headerShown: false }}
+               />
+               <Stack.Screen 
+                  name='AccountSetting'
+                  component={AccountSetting}
+                  options={{ headerShown: false }}
+               />
               <Stack.Screen
                 name="MapScreen"
                 component={MapScreen}

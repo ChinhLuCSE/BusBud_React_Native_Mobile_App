@@ -15,7 +15,7 @@ import {
   setTravelTimeInformation,
 } from "../slices/navSlice";
 import MapViewDirections from "react-native-maps-directions";
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
@@ -49,7 +49,7 @@ const Map = () => {
 
     //Zoom & fit to markers
     mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-      edgePadding: { top: 50, right: 50, botton: 50, left: 50 },
+      edgePadding: { top: 50, right: 50, bottom: 100, left: 50 },
     });
   }, [origin, destination]);
 
@@ -68,101 +68,126 @@ const Map = () => {
   }, [origin, destination, GOOGLE_MAPS_APIKEY]);
 
   return (
-    <View style={{
-      // backgroundColor: 'black'
-    }}>
-      <MapView
-        ref={mapRef}
-        style={tw`flex-1`}
-        mapType="mutedStandard"
-        //   initialRegion={{
-        //     latitude: origin.location.lat,
-        //     longitude: origin.location.lng,
-        //     latitudeDelta: 0.005,
-        //     longitudeDelta: 0.005,
-        //   }}
-        initialRegion={{
-          latitude: LATITUDE,
-          longitude: LONGITUDE,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
+    <MapView
+      ref={mapRef}
+      style={[
+        tw`flex-1`,
+        {
+          justifyContent: "flex-end",
+          alignItems: "center",
+        },
+      ]}
+      mapType="mutedStandard"
+      //   initialRegion={{
+      //     latitude: origin.location.lat,
+      //     longitude: origin.location.lng,
+      //     latitudeDelta: 0.005,
+      //     longitudeDelta: 0.005,
+      //   }}
+      initialRegion={{
+        latitude: LATITUDE,
+        longitude: LONGITUDE,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      }}
+    >
+      {origin && destination && (
+        <MapViewDirections
+          // origin={origin.description}
+          // destination={destination.description}
+          // apikey={GOOGLE_MAPS_APIKEY}
+          strokeWidth={3}
+          strokeColor="black"
+          origin={state.coordinates[0]}
+          waypoints={
+            state.coordinates.length > 2
+              ? state.coordinates.slice(1, -1)
+              : undefined
+          }
+          destination={state.coordinates[state.coordinates.length - 1]}
+          apikey={GOOGLE_MAPS_APIKEY}
+        />
+      )}
+
+      {origin?.location && (
+        <Marker
+          coordinate={{
+            latitude: origin.location.lat,
+            longitude: origin.location.lng,
+          }}
+          title="Origin"
+          description={origin.description}
+          identifier="origin"
+        />
+      )}
+
+      {destination?.location && (
+        <Marker
+          coordinate={{
+            latitude: destination.location.lat,
+            longitude: destination.location.lng,
+          }}
+          title="Destination"
+          description={destination.description}
+          identifier="destination"
+        />
+      )}
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate("HomeScreen");
         }}
       >
-        {origin && destination && (
-          <MapViewDirections
-            // origin={origin.description}
-            // destination={destination.description}
-            // apikey={GOOGLE_MAPS_APIKEY}
-            strokeWidth={3}
-            strokeColor="black"
-            origin={state.coordinates[0]}
-            waypoints={
-              state.coordinates.length > 2
-                ? state.coordinates.slice(1, -1)
-                : undefined
-            }
-            destination={state.coordinates[state.coordinates.length - 1]}
-            apikey={GOOGLE_MAPS_APIKEY}
-          />
-        )}
+        <Text style={tw`text-white text-xl`}>Done</Text>
+      </TouchableOpacity>
 
-        {origin?.location && (
-          <Marker
-            coordinate={{
-              latitude: origin.location.lat,
-              longitude: origin.location.lng,
-            }}
-            title="Origin"
-            description={origin.description}
-            identifier="origin"
-          />
-        )}
-
-        {destination?.location && (
-          <Marker
-            coordinate={{
-              latitude: destination.location.lat,
-              longitude: destination.location.lng,
-            }}
-            title="Destination"
-            description={destination.description}
-            identifier="destination"
-          />
-        )}
-      </MapView>
-
-      <View style={{
-        
-        // backgroundColor: 'blue',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        
-      }}>
+      {/* <View
+        style={{
+          // backgroundColor: "blue",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          flex: 1,
+        }}
+      >
         <TouchableOpacity
           style={[
-            tw`py-3 m-3`,
+            tw`py-3 m-3 mb-15`,
             {
               backgroundColor: "#53825F",
-              
-              // 
-            
+
+              //
+              // alignItems: "center",
+              // justifyContent: "center",
               paddingLeft: 100,
               paddingRight: 100,
-              borderRadius: 10
+              borderRadius: 10,
+              
             },
           ]}
-
           onPress={() => {
-            navigation.navigate("HomeScreen")
+            navigation.navigate("HomeScreen");
           }}
         >
           <Text style={tw`text-center text-white text-xl`}>Done</Text>
         </TouchableOpacity>
-      </View>
-    </View>
+      </View> */}
+    </MapView>
   );
 };
 
 export default Map;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: [
+    tw`py-3 m-3 mb-15`,
+    {
+      backgroundColor: "#53825F",
+      justifyContent: "flex-end",
+      alignItems: "center",
+      paddingLeft: 100,
+      paddingRight: 100,
+      borderRadius: 10,
+    },
+  ],
+});
