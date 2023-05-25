@@ -27,6 +27,7 @@ import Setting from "./screens/Setting";
 import Notifications from "./screens/Notification";
 import Payments from "./screens/Payments";
 import AccountSetting from "./screens/AccountSetting";
+import MenuOverlay from "./screens/MenuOverlay";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -92,6 +93,13 @@ export default function App() {
                   headerShown: false,
                 }}
               />
+              <Stack.Screen
+                name="MenuOverlay"
+                component={MenuOverlay}
+                options={{
+                  headerShown: false,
+                }}
+              />              
               <Stack.Screen
                 name="QR1"
                 component={QR1}

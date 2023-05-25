@@ -27,7 +27,10 @@ const StartingScreen6 = () => {
         <View style={styles.StartingScreen6Child} />
         <Pressable
           style={[styles.StartingScreen6Item, styles.StartingScreen6ItemLayout]}
-          onPress={() => navigation.navigate("HomeScreen")}
+          onPress={() => navigation.reset({
+            index: 0,
+            routes: [{name: 'HomeScreen'}]
+          })}
         />
         <View style={styles.moveParent}>
           <Text style={[styles.move, styles.moveTypo]}>Move</Text>

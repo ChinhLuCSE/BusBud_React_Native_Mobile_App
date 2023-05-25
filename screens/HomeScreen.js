@@ -9,16 +9,13 @@ import { setDestination, setOrigin } from '../slices/navSlice'
 import NavFavourites from '../components/NavFavourites';
 import Input from '../components/Home/Input';
 import { Border, Color } from '../GlobalStyles';
-import MenuOverlay from '../components/Home/MenuOverlay';
+import MenuOverlay from './MenuOverlay';
 import NavFavourites_HomeScreen from '../components/NavFavourite_HomeScreen';
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuVisible(!isMenuVisible);
-  };
+  const navigation = useNavigation();
 
   dispatch(
     setOrigin({
@@ -39,7 +36,8 @@ const HomeScreen = () => {
       <TouchableOpacity
         onPress={()=>{
           console.log("Press")
-          toggleMenu();
+          // toggleMenu();
+          navigation.navigate("MenuOverlay");
         }}
       >
         <Image style={{width: 30, marginBottom: 10}}
@@ -47,7 +45,7 @@ const HomeScreen = () => {
           resizeMode="contain"/>
       </TouchableOpacity>
 
-        <Modal 
+        {/* <Modal 
           visible={isMenuVisible} 
           // animationType="slide" 
           // transparent={true}
@@ -60,7 +58,7 @@ const HomeScreen = () => {
             isMenuVisible={isMenuVisible}
             setIsMenuVisible={setIsMenuVisible}
           />
-        </Modal>
+        </Modal> */}
 
       </View>
       <View>
