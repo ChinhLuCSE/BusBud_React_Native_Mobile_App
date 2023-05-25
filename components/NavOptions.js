@@ -26,7 +26,7 @@ const data = [
     id: "2",
     title: "Bus Stops",
     image: require("../assets/location.png"),
-    screen: "BlaBla",
+    screen: "Map2",
     bg_color: Color.primary500,
   },
 ];

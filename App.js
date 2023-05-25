@@ -140,6 +140,13 @@ export default function App() {
                   headerShown: false,
                 }}
               />
+              <Stack.Screen
+              name="Map2"
+              component={Map2}
+              options={{
+                headerShown: false,
+              }}
+            />
             </Stack.Navigator>
           </KeyboardAvoidingView>
         </SafeAreaProvider>
