@@ -55,7 +55,7 @@ export default function App() {
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
             <Stack.Navigator>
-              <Stack.Screen
+               <Stack.Screen
                 name="StartingScreen1"
                 component={StartingScreen1}
                 options={{ headerShown: false }}
@@ -84,7 +84,7 @@ export default function App() {
                 name="StartingScreen6"
                 component={StartingScreen6}
                 options={{ headerShown: false }}
-              />
+              /> 
               <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
