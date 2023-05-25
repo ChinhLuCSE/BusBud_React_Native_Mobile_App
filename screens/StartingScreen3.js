@@ -28,7 +28,7 @@ const StartingScreen3 = ({route=0 }) => {
       <View style={[styles.startingScreen3Inner, styles.text1Layout]}>
         <View style={[styles.groupParent, styles.text1Layout]}>
           <View style={[styles.parent, styles.groupLayout]}>
-            <Text style={[styles.text1, styles.text1Layout]}>0</Text>
+            <TextInput style={[styles.text1, styles.text1Layout]} placeholder="0" keyboardType="numeric"></TextInput>
             <Image
               style={styles.groupChild}
               contentFit="cover"
@@ -36,7 +36,7 @@ const StartingScreen3 = ({route=0 }) => {
             />
           </View>
           <View style={[styles.group, styles.groupLayout]}>
-            <Text style={[styles.text1, styles.text1Layout]}>0</Text>
+            <TextInput style={[styles.text1, styles.text1Layout]} placeholder="0" keyboardType="numberic"></TextInput>
             <Image
               style={styles.groupChild}
               contentFit="cover"
@@ -44,7 +44,7 @@ const StartingScreen3 = ({route=0 }) => {
             />
           </View>
           <View style={[styles.container, styles.groupLayout]}>
-            <Text style={[styles.text1, styles.text1Layout]}>0</Text>
+            <TextInput style={[styles.text1, styles.text1Layout]} placeholder="0" keyboardType="numberic"></TextInput>
             <Image
               style={styles.groupChild}
               contentFit="cover"
@@ -52,7 +52,7 @@ const StartingScreen3 = ({route=0 }) => {
             />
           </View>
           <View style={[styles.groupView, styles.groupLayout]}>
-            <Text style={[styles.text1, styles.text1Layout]}>0</Text>
+            <TextInput style={[styles.text1, styles.text1Layout]} placeholder="0" keyboardType="numberic"></TextInput>
             <Image
               style={styles.groupChild}
               contentFit="cover"
