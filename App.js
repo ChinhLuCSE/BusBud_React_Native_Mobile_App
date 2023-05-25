@@ -184,7 +184,37 @@ export default function App() {
             style={{ flex: 1 }}
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
-            <Stack.Navigator>
+          <Stack.Navigator>
+            {/* <Stack.Screen
+                name="StartingScreen1"
+                component={StartingScreen1}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="StartingScreen2"
+                component={StartingScreen2}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="StartingScreen3"
+                component={StartingScreen3}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="StartingScreen4"
+                component={StartingScreen4}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="StartingScreen5"
+                component={StartingScreen5}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="StartingScreen6"
+                component={StartingScreen6}
+                options={{ headerShown: false }}
+              /> */}
               <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
