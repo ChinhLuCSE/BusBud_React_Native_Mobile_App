@@ -93,8 +93,22 @@ export default function App() {
                 }}
               />
               <Stack.Screen
-                name="Q1"
+                name="QR1"
                 component={QR1}
+                options={{
+                  headerShown: false,
+                }}
+              />
+               <Stack.Screen
+                name="QR2"
+                component={QR2}
+                options={{
+                  headerShown: false,
+                }}
+              />
+               <Stack.Screen
+                name="QR3"
+                component={QR3}
                 options={{
                   headerShown: false,
                 }}
