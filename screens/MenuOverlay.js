@@ -7,12 +7,11 @@ import {
   Dimensions,
 } from "react-native";
 import React, { forwardRef, useImperativeHandle } from "react";
-import { Color } from "../../GlobalStyles";
+import { Color } from "../GlobalStyles";
 import { useNavigation } from "@react-navigation/native";
 
-const MenuOverlay = (props) => {
+const MenuOverlay = () => {
   const navigation = useNavigation();
-  const { isMenuVisible, setIsMenuVisible } = props;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -27,7 +26,6 @@ const MenuOverlay = (props) => {
           }}
           onPress={() => {
             console.log("Pressed!");
-            setIsMenuVisible(false);
             navigation.navigate("Setting")
           }}
           
@@ -36,7 +34,7 @@ const MenuOverlay = (props) => {
             <Image
               style={{ width: 70, height: 70 }}
               resizeMode="contain"
-              source={require("../../assets/avatar-rounded.png")}
+              source={require("../assets/avatar-rounded.png")}
             />
           </View>
           <View
@@ -64,7 +62,6 @@ const MenuOverlay = (props) => {
           }}
           onPress={() => {
             console.log("Pressed!");
-            setIsMenuVisible(false);
             navigation.navigate("Notifications")
           }}
         >
@@ -93,7 +90,7 @@ const MenuOverlay = (props) => {
           >
             <Image
               style={{ width: 20, height: 20 }}
-              source={require("../../assets/right-arrow.png")}
+              source={require("../assets/right-arrow.png")}
               resizeMode="contain"
             />
           </View>
@@ -105,7 +102,6 @@ const MenuOverlay = (props) => {
         <TouchableOpacity
           style={styles.element}
           onPress={() => {
-            setIsMenuVisible(false);
             console.log('Pressed!')
             navigation.navigate("Payments");
           }}
@@ -115,7 +111,6 @@ const MenuOverlay = (props) => {
           
         <TouchableOpacity style={styles.element}
         onPress={() => {
-          setIsMenuVisible(false);
           console.log('QR1!')
           navigation.navigate("QR1");
         }}
@@ -125,7 +120,6 @@ const MenuOverlay = (props) => {
 
         <TouchableOpacity style={styles.element}
           onPress={() => {
-            setIsMenuVisible(false);
             console.log('Setting!')
             navigation.navigate("Setting");
           }}       
@@ -135,7 +129,8 @@ const MenuOverlay = (props) => {
         <TouchableOpacity
           style={styles.element}
           onPress={() => {
-            setIsMenuVisible(false);
+            // setIsMenuVisible(false);
+            navigation.navigate("HomeScreen");
           }}
         >
           <Text style={[styles.textElement, { color: Color.secondary600 }]}>

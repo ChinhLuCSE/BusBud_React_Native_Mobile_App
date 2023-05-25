@@ -93,6 +93,8 @@ const styles = StyleSheet.create({
   startingScreen1ItemPosition: {
     left: 37,
     position: "absolute",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   moveTypo: {
     height: 169,
