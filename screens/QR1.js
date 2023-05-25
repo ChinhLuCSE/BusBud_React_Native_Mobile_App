@@ -1,23 +1,49 @@
-import * as React from "react";
-import { StyleSheet, View, Text, Pressable, Dimensions } from "react-native";
+import React, { useState, useEffect} from "react";
+import { BarCodeScanner } from "expo-barcode-scanner";
+
+import { StyleSheet, View, Text, Pressable, Dimensions, Button } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
+
 const QR1 = () => {
   const navigation = useNavigation();
+  const [hasPermissionQR, setHasPermissionQR] = useState(null);
+  const [scanned, setScanned] = useState(false);
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermissionQR(status === "granted");
+    })();
+  }, []);
+
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    setResult(data);
+  };
+
+  if (hasPermissionQR === null) {
+    return <Text>Đang xin cấp quyền truy cập máy ảnh...</Text>;
+  }
+  if (hasPermissionQR === false) {
+    return <Text>Không có quyền truy cập máy ảnh</Text>;
+  }
+  const navi = () => {
+    navigation.navigate("QR2")
+  };
 
   return (
     <View style={styles.QR1}>
       <View style={[styles.QR1Child, styles.moveParentPosition]} />
-      <View style={[styles.moveParent, styles.moveParentPosition]}>
-        <Text style={[styles.move, styles.moveTypo]}>Move</Text>
-        <Text style={[styles.with, styles.moveTypo]}>with</Text>
-        <Text style={[styles.safety, styles.moveTypo]}>Safety</Text>
-      </View>
+      
       <Pressable
         style={styles.wrapper}
-        onPress={() => navigation.navigate("IPhone11ProMax9")}
+        onPress={() => navigation.navigate("HomeScreen")}
       >
         <Image
           style={styles.icon}
@@ -26,25 +52,21 @@ const QR1 = () => {
         />
       </Pressable>
       <Text style={styles.payment}>Payment</Text>
-      <View style={styles.QR1Item} />
-      <Image
-        style={[
-          styles.QR1Inner,
-          styles.accountBalanceWalletPosition,
-        ]}
-        contentFit="cover"
-        source={require("../assets/group-87.png")}
-      />
-      <Pressable
-        style={styles.image3}
-        onPress={() => navigation.navigate("QR2")}
-      >
-        <Image
-          style={styles.icon}
-          contentFit="cover"
-          source={require("../assets/image-3.png")}
-        />
-      </Pressable>
+      <View style={styles.QR1Item}>
+        <View style={styles.containerQR}>
+      {scanned ? (
+        navi()
+      ) : (
+        <View style={styles.barcodeScannerContainer}>
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+            style={StyleSheet.absoluteFillObject}
+          />
+          
+        </View>
+      )}
+    </View></View>
+      
       <View style={styles.rectangleView} />
       <Image
         style={[
@@ -54,148 +76,143 @@ const QR1 = () => {
         contentFit="cover"
         source={require("../assets/account-balance-wallet.png")}
       />
-      <Text style={[styles.balance, styles.textTypo]}>Balance:</Text>
+      <Text style={[styles.balance, styles.textTypo ]}>Balance:</Text>
       <Text style={[styles.text, styles.textTypo]}>10.000.000 đ</Text>
     </View>
   );
 };
 
-const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
-
 const styles = StyleSheet.create({
   moveParentPosition: {
     left: 0,
-    width: '100%',
-    position: 'absolute',
+    width: screenWidth,
+    position: "absolute",
   },
-  moveTypo: {
-    height: '15%',
-    textAlign: 'left',
-    color: '#fff',
-    fontFamily: 'Roboto-Bold',
-    fontWeight: '700',
-    fontSize: Math.min(windowWidth, windowHeight) * 0.1, // Điều chỉnh kích thước phông chữ dựa trên kích thước nhỏ hơn của cửa sổ
-    left: 0,
-    position: 'absolute',
-  },
+
   accountBalanceWalletPosition: {
-    left: '16%',
-    position: 'absolute',
+    left: 0.121 * screenWidth,
+    position: "absolute",
   },
   textTypo: {
-    fontSize: Math.min(windowWidth, windowHeight) * 0.04, // Điều chỉnh kích thước phông chữ dựa trên kích thước nhỏ hơn của cửa sổ
-    top: windowHeight * 0.9,
-    fontFamily: 'h1Header136ptSemiBoldLexend',
-    fontWeight: '600',
-    lineHeight: 28,
-    textAlign: 'left',
-    position: 'absolute',
-  },
-    QR1Child: {
-    backgroundColor: '#fff',
-    width: '100%',
-    height: '100%',
-    },
-    move: {
-    width: '86%',
-    top: 0,
-    },
-    with: {
-    top: '12%',
-    width: '66%',
-    },
-    safety: {
-    top: '24%',
-    width: '100%',
-    },
-    moveParent: {
-    top: '42%',
-    height: '39%',
-    display: "none",
-    opacity: 0.3,
-    width: '100%',
-    },
-    icon: {
-    height: "100%",
-    width: "100%",
-    },
-    wrapper: {
-    left: '4%',
-    top: '5%',
-    width: '4.6%',
-    height: '2.2%',
-    position: "absolute",
-    },
-    payment: {
-    top: '4%',
-    left: '14%',
-    fontSize: Math.min(windowWidth, windowHeight) * 0.05, // adjust font size based on smaller dimension
-    color: "#2f2f2f",
-    width: '65%',
-    height: '4%',
-    fontFamily: 'h1Header136ptSemiBoldLexend',
+    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
+    top: 0.892 * screenHeight,
+
+    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
     lineHeight: 28,
     textAlign: "left",
     position: "absolute",
-    },
-    QR1Item: {
-    top: '11%',
-    left: '6%',
-    borderRadius: 50,
+  },
+  QR1Child: {
+    backgroundColor: Color.white,
+    width: 414,
+    top: 0,
+    height: 896,
+  },
+  icon: {
+    height: "100%",
+    width: "100%",
+  },
+  wrapper: {
+    left: 0.041 * screenWidth,
+    top: 0.051 * screenHeight,
+    width: 0.057 * screenWidth,
+    height: 0.038 * screenHeight,
+    position: "absolute",
+  },
+  payment: {
+    top: 0.060 * screenHeight,
+    left: 0.14 * screenWidth,
+    fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
+    color: Color.primary900,
+    width: 0.65 * screenWidth,
+    height: 0.045 * screenHeight,
+    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
+    fontWeight: "600",
+    lineHeight: 28,
+    textAlign: "left",
+    position: "absolute",
+  },
+  QR1Item: {
+    top: 0.119 * screenHeight,
+    left: 0.063 * screenWidth,
+    borderRadius: Border.br_3xl,
     backgroundColor: "#eff1f5",
     borderStyle: "solid",
     borderColor: "#101828",
     borderWidth: 1,
-    width: '88%',
-    height: '72%',
+    width: 0.866 * screenWidth,
+    height: 0.729 * screenHeight,
     position: "absolute",
-    },
-    QR1Inner: {
-    top: '32%',
-    width: '67%',
-    aspectRatio: 1, // set to keep aspect ratio
-    },
-    image3: {
-    left: '22%',
-    top: '37%',
-    width: '55%',
-    height: '26%',
+  },
+  
+  
+  rectangleView: {
+    top: 0.88 * screenHeight,
+    left: 0.099 * screenWidth,
+    borderRadius: Border.br_3xs,
+    backgroundColor: Color.primary700,
+    width: 0.794 * screenWidth,
+    height: 0.088 * screenHeight,
     position: "absolute",
-    },
-    rectangleView: {
-    top: '88%',
-    left: '10%',
-    borderRadius: 20,
-    backgroundColor: "#2f2f2f",
-    width: '80%',
-    height: '7.5%',
-    position: "absolute",
-    },
-    accountBalanceWallet: {
-    top: '89%',
-    maxWidth: '15%',
-    maxHeight: '15%',
+  },
+  accountBalanceWallet: {
+    top: 0.892 * screenHeight,
+    width: 0.122 * screenWidth,
+    height: 0.06 * screenHeight,
     overflow: "hidden",
-    },
-    balance: {
-    left: '30%',
-    color: "#bcbcbc",
-    width: '23%',
-    height: '4%',
-    },
-    text: {
-    left: '54%',
-    color: "#e8b517",
-    },
-    QR1: {
-    backgroundColor: "#F0F2F5",
+  },
+  balance: {
+   left: 0.285 * screenWidth,
+   color: Color.gray_100,
+   width: 0.233 * screenWidth,
+   height: 0.087 * screenHeight,
+
+  },
+  text: {
+    left: 0.537 * screenWidth,
+    color: Color.yellow,
+  },
+  QR1: {
+    backgroundColor: Color.aliceblue,
     flex: 1,
     overflow: "hidden",
-    height: '100%',
-    width: '100%',
-    },
-    });
-    
-    export default QR1;
+    height: screenHeight,
+    width: "100%",
+  },
+  containerQR: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  barcodeScannerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+  },
+  scanResultText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  scanResult: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  cameraActions: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 20,
+    alignItems: "flex-end",
+  },
+  cameraAction: {
+    alignSelf: "flex-end",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+});
+
+export default QR1;

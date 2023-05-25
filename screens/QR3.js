@@ -1,36 +1,36 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Pressable, Image } from "react-native";
+import { StyleSheet, View, Text, Pressable,Dimensions } from "react-native";
+import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
 
 const QR3 = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.QR3}>
-      <View style={styles.QR3Child} />
-      <View style={styles.moveParent}>
-        <Text style={[styles.move, styles.moveTypo]}>Move</Text>
-        <Text style={[styles.with, styles.moveTypo]}>with</Text>
-        <Text style={[styles.safety, styles.moveTypo]}>Safety</Text>
-      </View>
+      <View style={[styles.QR3Child, styles.moveParentPosition]} />
+      
       <Pressable
         style={styles.wrapper}
         onPress={() => navigation.navigate("QR2")}
       >
         <Image
           style={styles.icon}
-          resizeMode="cover"
+          contentFit="cover"
           source={require("../assets/vector-5.png")}
         />
       </Pressable>
-      <Text style={[styles.payment, styles.paymentTypo]}>Payment</Text>
+      <Text style={styles.payment}>Payment</Text>
       <Text style={[styles.paymentSuccess, styles.paymentTypo]}>
         Payment Success
       </Text>
       <Image
         style={styles.image4Icon}
-        resizeMode="cover"
+        contentFit="cover"
         source={require("../assets/image-4.png")}
       />
       <Text style={styles.text}>3.000 đ</Text>
@@ -43,7 +43,7 @@ const QR3 = () => {
       <Text style={[styles.text1, styles.amTypo]}>9.997.000đ</Text>
       <Image
         style={styles.QR3Item}
-        resizeMode="cover"
+        contentFit="cover"
         source={require("../assets/line-2.png")}
       />
       <Text style={[styles.paymentCode, styles.balanceFlexBox]}>
@@ -55,7 +55,7 @@ const QR3 = () => {
       <Text style={[styles.balance, styles.balanceFlexBox]}>Balance</Text>
       <Pressable
         style={[styles.rectangleParent, styles.groupChildLayout]}
-        onPress={() => navigation.navigate("IPhone11ProMax9")}
+        onPress={() => navigation.navigate("HomeScreen")}
       >
         <View style={[styles.groupChild, styles.groupChildLayout]} />
         <Text style={[styles.done, styles.amTypo]}>Done</Text>
@@ -65,145 +65,199 @@ const QR3 = () => {
 };
 
 const styles = StyleSheet.create({
+  moveParentPosition: {
+    left: 0,
+    width: screenWidth,
+    position: "absolute",
+  },
   moveTypo: {
-    flex: 1,
+    height: 135,
+    textAlign: "left",
     color: Color.white,
     fontFamily: FontFamily.robotoBold,
-    fontSize: "10%", // Adjust the value as needed
-    textAlign: "left",
+    fontWeight: "700",
+    fontSize: 144,
+    left: 0,
+    position: "absolute",
   },
   paymentTypo: {
-    fontSize: "3%", // Adjust the value as needed
+    height: 33,
+    fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: "4%", // Adjust the value as needed
+    lineHeight: 28,
     textAlign: "left",
+    position: "absolute",
   },
   amTypo: {
-    fontSize: "2%", // Adjust the value as needed
+    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: "4%", // Adjust the value as needed
+    lineHeight: 28,
     textAlign: "left",
+    position: "absolute",
   },
   balanceFlexBox: {
     alignItems: "center",
     display: "flex",
     color: Color.gray400,
+    left: 36,
     textAlign: "left",
+    position: "absolute",
   },
   dateTypo: {
-    width: "30%", // Adjust the value as needed
+    width: 139,
     alignItems: "center",
     display: "flex",
     color: Color.gray400,
-    fontSize: "1.5%", // Adjust the value as needed
+    fontSize: FontSize.hint14ptSemiBoldLexend_size,
+    left: 36,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: "4%", // Adjust the value as needed
+    lineHeight: 28,
     textAlign: "left",
+    position: "absolute",
   },
   groupChildLayout: {
-    width: "80%", // Adjust the value as needed
+    width: 0.794 * screenWidth,
+    height: 0.088 * screenHeight,
+    position: "absolute",
   },
   QR3Child: {
     backgroundColor: Color.white,
-    flex: 1,
-    height: "100%",
-    width: "100%",
+    width: 414,
+    top: 0,
+    height: 896,
   },
-  move: {
-    width: "85%", // Adjust the value as needed
-  },
-  with: {
-    width: "66%", // Adjust the value as needed
-  },
-  safety: {
-    width: "100%",
-  },
-  moveParent: {
-    height: "39%", // Adjust the value as needed
-    display: "flex",
-    opacity: 0.3,
-    width: "100%",
-  },
+ 
   icon: {
-    flex: 1,
-    width: "100%",
     height: "100%",
+    width: "100%",
   },
   wrapper: {
-    width: "4.5%", // Adjust the value as needed
-    aspectRatio: 1,
+    left: 0.041 * screenWidth,
+    top: 0.051 * screenHeight,
+    width: 0.059 * screenWidth,
+    height: 0.038 * screenHeight,
+    position: "absolute",
   },
   payment: {
+    top: 0.060 * screenHeight,
+    left: 0.14 * screenWidth,
+    fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
     color: Color.primary900,
-    width: "65%", // Adjust the value as needed
-  },
-  paymentSuccess: {
-    color: Color.secondary600,
-    width: "61%", // Adjust the value as needed
-  },
-  image4Icon: {
-    width: "37.5%", // Adjust the value as needed
-    aspectRatio: 1,
-  },
-  text: {
-    fontSize: "2%", // Adjust the value as needed
-    color: Color.black,
+    width: 0.65 * screenWidth,
+    height: 0.045 * screenHeight,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: "4%", // Adjust the value as needed
+    lineHeight: 28,
     textAlign: "left",
+    position: "absolute",
+  },
+  paymentSuccess: {
+    position: "absolute",
+
+    top: screenHeight * 0.45,
+    left: screenWidth * 0.21,
+    color: Color.secondary600,
+    width: screenWidth,
+  },
+  image4Icon: {
+
+    top: screenHeight * 0.19,
+    left: screenWidth * 0.31,
+    width: screenWidth * 0.38,
+    height: screenWidth * 0.38,
+    position: "absolute",
+  },
+  text: {
+    top: screenHeight * 0.47,
+    left: screenWidth * 0.34,
+    fontSize: FontSize.h1Header136ptSemiBoldLexend_size,   
+    color: Color.gray900,
+    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
+    fontWeight: "600",
+    lineHeight: 0.14 * screenWidth,
+    textAlign: "left",
+    position: "absolute",
   },
   abcdef: {
-    fontSize: "2%", // Adjust the value as needed
+    left: screenWidth * 0.48,
+
+    top: screenHeight * 0.59,
+    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
     color: Color.black,
   },
   buyTicketBus: {
+    left: screenWidth * 0.4,
+    top: screenHeight * 0.65,
     color: Color.black,
   },
   april242023: {
+    top: screenHeight * 0.71,
+    left: screenWidth * 0.45,
     color: Color.black,
   },
   am: {
+    top: screenHeight * 0.77,
+    left: screenWidth * 0.48,
     color: Color.black,
   },
   text1: {
+    top: screenHeight * 0.81,
+    left: screenWidth * 0.47,
     color: Color.black,
   },
   QR3Item: {
-    width: "85%", // Adjust the value as needed
+    top: screenHeight * 0.59,
+    left: screenWidth * 0.07,
+    width: screenWidth * 0.85,
     height: 1,
+    position: "absolute",
   },
   paymentCode: {
-    width: "39%", // Adjust the value as needed
-    fontSize: "1.5%", // Adjust the value as needed
+    width: 161,
+    fontSize: FontSize.hint14ptSemiBoldLexend_size,
     display: "flex",
     color: Color.gray400,
+    top: screenHeight * 0.59,
+    width: screenWidth,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: "4%", // Adjust the value as needed
+    lineHeight: 28,
   },
-  transaction: {},
-  date: {},
-  time: {},
+  transaction: {
+    top: screenHeight * 0.65,
+  },
+  date: {
+    top: screenHeight * 0.7,
+  },
+  time: {
+    top: screenHeight * 0.77,
+  },
   balance: {
-    fontSize: "2%", // Adjust the value as needed
+    top: screenHeight * 0.81,
+
+    fontSize: FontSize.size_mid,
     fontWeight: "500",
     fontFamily: FontFamily.robotoMedium,
-    width: "28%", // Adjust the value as needed
+    width: 116,
   },
   groupChild: {
     borderRadius: Border.br_3xs,
     backgroundColor: Color.primary700,
+    left: 0,
+    top: 0,
   },
   done: {
-    color: Color.aliceblue,
-    width: "13%", // Adjust the value as needed
-    height: "3%", // Adjust the value as needed
+    top: 0.019 * screenHeight,
+    left: 0.34* screenWidth,
+
+    width: screenWidth,
+    height: screenHeight,
   },
   rectangleParent: {
+    top: 0.88 * screenHeight,
     shadowColor: "rgba(0, 0, 0, 0.25)",
     shadowOffset: {
       width: 0,
@@ -212,13 +266,14 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 4,
     shadowOpacity: 1,
-    width: "82%", // Adjust the value as needed
+    left: 0.099 * screenWidth,
+    
   },
   QR3: {
     backgroundColor: Color.aliceblue,
     flex: 1,
     overflow: "hidden",
-    height: "100%",
+    height: screenHeight,
     width: "100%",
   },
 });

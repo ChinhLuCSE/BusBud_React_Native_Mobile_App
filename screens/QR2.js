@@ -1,20 +1,21 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
+
 const QR2 = () => {
   const navigation = useNavigation();
 
+
+
   return (
     <View style={styles.QR2}>
-      <View style={styles.QR2Child} />
-      <View style={styles.moveParent}>
-        <Text style={[styles.move, styles.moveTypo]}>Move</Text>
-        <Text style={[styles.with, styles.moveTypo]}>with</Text>
-        <Text style={[styles.safety, styles.moveTypo]}>Safety</Text>
-      </View>
+      <View style={[styles.QR2Child, styles.moveParentPosition]} />
+
       <Pressable
         style={styles.wrapper}
         onPress={() => navigation.navigate("QR1")}
@@ -25,23 +26,17 @@ const QR2 = () => {
           source={require("../assets/vector-5.png")}
         />
       </Pressable>
-      <Text style={[styles.payment, styles.paymentTypo]}>Payment</Text>
-      <View style={[styles.QR2Item, styles.groupChildBg]} />
-      <Image
-        style={styles.accountBalanceWallet}
-        contentFit="cover"
-        source={require("../assets/account-balance-wallet.png")}
-      />
-      <Text style={[styles.balance, styles.textTypo]}>Balance:</Text>
-      <Text style={[styles.text, styles.textTypo]}>10.000.000 đ</Text>
-      <View style={[styles.QR2Inner, styles.lineViewBorder]} />
-      <Text style={[styles.buyTicket, styles.paymentTypo]}>Buy Ticket</Text>
-      <Text style={[styles.bus53, styles.bus53Typo]}>Bus 53</Text>
+      <Text style={styles.payment}>Payment</Text>
+      
+      <View style={[styles.QR2Inner, styles.lineViewBorder]}>
+        <Text style={[styles.bus53, styles.bus53Typo]}>Bus 53</Text>
       <View style={[styles.lineView, styles.lineViewBorder]} />
       <Text style={[styles.text1, styles.bus53Typo]}>3.000 đ</Text>
       <Text style={[styles.numberPlatesXxXxxxxx, styles.bus53Typo]}>
         Number Plates: XX-XXXXXX
-      </Text>
+      </Text></View> 
+      <Text style={[styles.buyTicket, styles.paymentTypo]}>Buy Ticket</Text>
+      
       <Pressable
         style={[styles.rectangleParent, styles.groupChildLayout]}
         onPress={() => navigation.navigate("QR3")}
@@ -49,26 +44,35 @@ const QR2 = () => {
         <View style={[styles.groupChild, styles.groupChildLayout]} />
         <Text style={[styles.done, styles.doneTypo]}>Done</Text>
       </Pressable>
+      
+        <View style={styles.rectangleView} />
+        <Image
+          style={[
+            styles.accountBalanceWallet,
+            styles.accountBalanceWalletPosition,
+          ]}
+          contentFit="cover"
+          source={require("../assets/account-balance-wallet.png")}
+        />
+        <Text style={[styles.balance, styles.textTypo]}>Balance:</Text>
+        <Text style={[styles.text, styles.textTypo]}>10.000.000 đ</Text>
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  moveTypo: {
-    height: '15%',
-    color: Color.white,
-    fontFamily: FontFamily.robotoBold,
-    fontWeight: "700",
-    fontSize: 144,
-    textAlign: "left",
+  moveParentPosition: {
     left: 0,
+    width: screenWidth,
     position: "absolute",
   },
+  
   paymentTypo: {
     color: Color.primary900,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: 28, 
+    lineHeight: 30,
     fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
     textAlign: "left",
     position: "absolute",
@@ -79,6 +83,11 @@ const styles = StyleSheet.create({
   },
   textTypo: {
     fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
+    top:0.892 * screenHeight,
+
+    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
+    fontWeight: "600",
+    lineHeight: 28,
     textAlign: "left",
     position: "absolute",
   },
@@ -90,133 +99,89 @@ const styles = StyleSheet.create({
     color: Color.gray900,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: 28,
+    lineHeight: 0.14 * screenWidth,
     textAlign: "left",
     position: "absolute",
   },
   groupChildLayout: {
-    height: 58,
-    width: 341,
+    width: 0.825 * screenWidth,
+    height: 0.085 * screenHeight,
     position: "absolute",
   },
   doneTypo: {
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
-    lineHeight: 28,
   },
   QR2Child: {
-    width: '100%', // Sử dụng đơn vị động
-    height: '100%', // Sử dụng đơn vị động
     backgroundColor: Color.white,
-    left: 0,
+    width: screenWidth,
     top: 0,
-    position: "absolute",
+    height: 896,
   },
-  move: {
-    width: 356,
-    top: 0,
-  },
-  with: {
-    top: 109,
-    width: 273,
-  },
-  safety: {
-    top: 217,
-    width: 414,
-  },
-  moveParent: {
-    height: 352,
-    display: "none",
-    opacity: 0.3,
-    top: 376,
-    width: 414,
-    left: 0,
-    position: "absolute",
-  },
+  
+ 
   icon: {
     height: "100%",
     width: "100%",
   },
   wrapper: {
-    left: '5%', // Sử dụng đơn vị động
-    top: '5%', // Sử dụng đơn vị động
-    width: '5%', // Sử dụng đơn vị động
-    height: '5%', // Sử dụng đơn vị động
+    left: 0.041 * screenWidth,
+    top: 0.051 * screenHeight,
+    width: 0.057 * screenWidth,
+    height: 0.038 * screenHeight,
     position: "absolute",
   },
   payment: {
-    top: 38,
-    left: 60,
-    width: 272,
-    height: 33,
-  },
-  QR2Item: {
-    top: 788,
-    left: 41,
-    width: 329,
-    height: 67,
-    position: "absolute",
-  },
-  accountBalanceWallet: {
-    top: 797,
-    left: 67,
-    width: 50,
-    height: 50,
-    position: "absolute",
-    overflow: "hidden",
-  },
-  balance: {
-    top: 806,
-    left: 126,
-    color: Color.gray_100,
-    width: 94,
-    height: 36,
+    top: 0.060 * screenHeight,
+    left: 0.14 * screenWidth,
+    fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
+    color: Color.primary900,
+    width: 0.65 * screenWidth,
+    height: 0.045 * screenHeight,
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
     fontWeight: "600",
     lineHeight: 28,
+    textAlign: "left",
+    position: "absolute",
   },
-  text: {
-    top: 810,
-    left: 220,
-    fontWeight: "500",
-    fontFamily: FontFamily.robotoMedium,
-    color: Color.yellow,
-  },
+  
   QR2Inner: {
-    top: 129,
-    left: 28,
+    top: 0.174 * screenHeight,
+    width: 0.864 * screenWidth,
+    height: 0.369 * screenHeight,
+
+    left: 0.065 * screenWidth,
+
     borderRadius: Border.br_3xl,
     borderColor: "#101828",
     borderWidth: 1,
-    width: 359,
-    height: 331,
     backgroundColor: Color.white,
   },
   buyTicket: {
-    top: 96,
-    left: 141,
+    top: 0.107 * screenHeight,
+    left: 0.34 * screenWidth,
   },
   bus53: {
-    top: 154,
-    left: 152,
+    top: 0 ,
+    left: 0.338 * screenWidth,
     fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
   },
   lineView: {
-    left: 89,
+    left: 0.154 * screenWidth,
     borderColor: "#98a2b3",
     borderTopWidth: 1,
-    width: 236,
-    height: 1,
-    top: 376,
+    width: 0.57 * screenWidth,
+    height: 0.003 * screenHeight,
+    top: 0.2 * screenHeight,
   },
   text1: {
-    top: 336,
-    left: 140,
+    top: 0.23 * screenHeight,
+    left: 0.307 * screenWidth,
     fontSize: FontSize.h1Header136ptSemiBoldLexend_size,
   },
   numberPlatesXxXxxxxx: {
-    top: 210,
-    left: 100,
+    top: 0.05 * screenHeight,
+    left: 0.212 * screenWidth,
     fontSize: FontSize.hint14ptSemiBoldLexend_size,
   },
   groupChild: {
@@ -226,11 +191,11 @@ const styles = StyleSheet.create({
     top: 0,
   },
   done: {
-    top: 16,
-    left: 131,
+    top: 0.027 * screenHeight,
+    left: 0.315 * screenWidth,
     color: Color.aliceblue,
-    width: 83,
-    height: 25,
+    width: 0.2 * screenWidth,
+    height: 0.06 * screenHeight,
     fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
     textAlign: "left",
     fontWeight: "600",
@@ -238,20 +203,50 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   rectangleParent: {
-    top: 500,
-    left: 35,
+    top: 0.588 * screenHeight,
+    left: 0.084 * screenWidth,
     shadowColor: "rgba(0, 0, 0, 0.25)",
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 0.036 * screenHeight,
     },
-    shadowRadius: 4,
-    elevation: 4,
+    shadowRadius: 0.036 * screenWidth,
+    elevation: 0.036 * screenWidth,
     shadowOpacity: 1,
+  },
+  rectangleView: {
+    top: 0.88 * screenHeight,
+    left: 0.099 * screenWidth,
+    borderRadius: Border.br_3xs,
+    backgroundColor: Color.primary700,
+    width: 0.794 * screenWidth,
+    height: 0.088 * screenHeight,
+    position: "absolute",
+  },
+  accountBalanceWallet: {
+    top: 0.892 * screenHeight,
+    width: 0.122 * screenWidth,
+    height: 0.06 * screenHeight,
+    overflow: "hidden",
+  },
+  balance: {
+   left: 0.285 * screenWidth,
+   color: Color.gray_100,
+   width: 0.233 * screenWidth,
+   height: 0.087 * screenHeight,
+
+  },
+  text: {
+    left: 0.537 * screenWidth,
+    color: Color.yellow,
+  },
+  accountBalanceWalletPosition: {
+    left: 67,
+    position: "absolute",
   },
   QR2: {
     backgroundColor: Color.aliceblue,
-    flex: 1, // Sử dụng flexbox để co dãn tự động
+    flex: 1,
     overflow: "hidden",
     height: 896,
     width: "100%",
