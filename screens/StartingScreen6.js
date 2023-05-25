@@ -16,7 +16,11 @@ const StartingScreen6 = () => {
   const closeDOTHISLATER = useCallback(() => {
     setDOTHISLATERVisible(false);
   }, []);
+  const [isTextFramed, setIsTextFramed] = useState(false);
 
+  const handleTextPress = () => {
+    setIsTextFramed(!isTextFramed);
+  };
   return (
     <>
       <View style={styles.StartingScreen6}>
@@ -53,10 +57,13 @@ const StartingScreen6 = () => {
           />
         </View>
         <View style={[styles.groupContainer, styles.groupLayout]}>
+
           <View style={[styles.creditOrDecitCardWrapper, styles.creditLayout]}>
+           
             <Text style={[styles.creditOrDecit, styles.creditLayout]}>
               Credit or Decit Card
             </Text>
+           
           </View>
           <Image
             style={[styles.cashIcon, styles.groupLayout]}
@@ -126,7 +133,7 @@ const styles = StyleSheet.create({
     top: 0,
   },
   creditLayout: {
-    height: 17,
+    height: 30,
     width: 200,
     position: "absolute",
   },
@@ -144,7 +151,7 @@ const styles = StyleSheet.create({
     height: 896,
   },
   StartingScreen6Item: {
-    top: 776,
+    top: 750,
     left: 37,
     borderRadius: Border.br_3xs,
     backgroundColor: Color.primary700,
@@ -180,7 +187,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   next: {
-    top: 792,
+    top: 765,
     left: 182,
     color: Color.aliceblue,
     width: 55,
@@ -288,6 +295,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     height: 896,
   },
+  
 });
 
 export default StartingScreen6;

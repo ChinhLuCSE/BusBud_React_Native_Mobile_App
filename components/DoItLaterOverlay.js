@@ -1,8 +1,13 @@
 import * as React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 import { FontSize, Color, FontFamily } from "../GlobalStyles";
+import { useNavigation, StackActions } from "@react-navigation/native";
 
 const DoItLaterOverlay = ({ onClose }) => {
+  const navigation = useNavigation();
+  const handleResetScreen = () => {
+    navigation.dispatch(StackActions.replace('StartingScreen6'));
+  };
   return (
     <View style={styles.doItLaterOverlay}>
       <View style={[styles.doItLaterOverlayChild, styles.groupChildPosition]} />
@@ -10,16 +15,20 @@ const DoItLaterOverlay = ({ onClose }) => {
 a ride without adding a
 payment method`}</Text>
       <View style={[styles.rectangleParent, styles.groupLayout]}>
+        <Pressable onPress={() => navigation.navigate("HomeScreen")}>
         <View style={[styles.groupChild, styles.groupLayout]} />
         <Text style={[styles.doItLater, styles.doItLaterTypo]}>
           Do it Later
         </Text>
+        </Pressable>
       </View>
       <View style={[styles.rectangleGroup, styles.groupLayout]}>
+        <Pressable onPress={handleResetScreen}>
         <View style={[styles.groupItem, styles.groupLayout]} />
         <Text style={[styles.addPaymentMethod, styles.doItLaterTypo]}>
           Add Payment Method Now
         </Text>
+        </Pressable>
       </View>
     </View>
   );

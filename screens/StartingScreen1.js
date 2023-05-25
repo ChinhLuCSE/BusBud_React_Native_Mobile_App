@@ -1,12 +1,16 @@
-import * as React from "react";
+import React, { useState } from 'react';
+
 import { Image } from "expo-image";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
 const StartingScreen1 = () => {
-  // const navigation = useNavigation();
-
+  const navigation = useNavigation();
+  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (text) => {
+    setInputValue(text);
+  };
   return (
     <View style={styles.startingScreen1}>
       <Image
@@ -16,7 +20,7 @@ const StartingScreen1 = () => {
       />
       <Pressable
         style={[styles.startingScreen1Item, styles.startingScreen1ItemPosition]}
-        onPress={() => navigation.navigate("StartingScreen3")}
+        onPress={() => navigation.navigate("StartingScreen3", { number: inputValue || null})}
       />
       <View style={[styles.moveParent, styles.moveParentPosition]}>
         <Text style={[styles.move, styles.moveTypo]}>Move</Text>
@@ -39,7 +43,14 @@ const StartingScreen1 = () => {
         </Text>
       </Pressable>
       <Text style={[styles.text, styles.textTypo]}>+81</Text>
-      <Text style={[styles.text1, styles.text1Clr]}>394793435</Text>
+      
+      <TextInput
+        style={[styles.text1, styles.text1Clr]}
+        onChangeText={handleInputChange}
+        value={inputValue}
+        keyboardType="numeric"
+      />
+        
       <Image
         style={styles.startingScreen1Inner}
         contentFit="cover"
@@ -204,7 +215,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.robotoMedium,
     fontWeight: "500",
     fontSize: FontSize.size_5xl,
-    top: 197,
+    top: 200,
   },
   startingScreen1Inner: {
     top: 224,

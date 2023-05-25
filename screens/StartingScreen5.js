@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { StyleSheet, View, Pressable, Text, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     height: 896,
   },
   startingScreen5Item: {
-    top: 776,
+    top: 750,
     backgroundColor: Color.primary700,
     shadowColor: "rgba(0, 0, 0, 0.25)",
     shadowOffset: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     width: 414,
   },
   next: {
-    top: 792,
+    top: 765,
     left: 176,
     fontWeight: "600",
     fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     left: 38,
     fontFamily: FontFamily.paragraph20ptLightLexend,
     color: Color.primary900,
-    height: 97,
+    height: 110,
     fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
     lineHeight: 28,
     width: 341,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     color: Color.secondary600,
   },
   checkTheBoxContainer: {
-    top: 674,
+    top: 650,
     fontSize: FontSize.hint14ptSemiBoldLexend_size,
     fontWeight: "300",
     fontFamily: FontFamily.hint14ptLightLexend,
