@@ -30,7 +30,7 @@ import Notifications from "./screens/Notification";
 import Payments from "./screens/Payments";
 import AccountSetting from "./screens/AccountSetting";
 import MenuOverlay from "./screens/MenuOverlay";
-
+import SplashScreen from "./screens/SplashScreen";
 const checkFirstLaunch = async () => {
   const isFirstLaunch = await AsyncStorage.getItem('alreadyLaunched');
   if(isFirstLaunch == null) {
@@ -76,6 +76,13 @@ export default function App() {
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
             <Stack.Navigator>
+              <Stack.Screen
+                name="SplashScreen"
+                component={SplashScreen}
+                options={{
+                  headerShown: false,
+                }}
+              />
                <Stack.Screen
                 name="StartingScreen1"
                 component={StartingScreen1}
@@ -193,6 +200,13 @@ export default function App() {
           >
           <Stack.Navigator>
             {/* <Stack.Screen
+              name="SplashScreen"
+              component={SplashScreen}
+              options={{
+                headerShown: false,
+              }}
+            /> */}
+            <Stack.Screen
                 name="StartingScreen1"
                 component={StartingScreen1}
                 options={{ headerShown: false }}
@@ -221,7 +235,8 @@ export default function App() {
                 name="StartingScreen6"
                 component={StartingScreen6}
                 options={{ headerShown: false }}
-              /> */}
+              />
+              
               <Stack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
@@ -280,6 +295,20 @@ export default function App() {
               <Stack.Screen
                 name="MapScreen"
                 component={MapScreen}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Map1"
+                component={Map1}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Map2"
+                component={Map2}
                 options={{
                   headerShown: false,
                 }}
