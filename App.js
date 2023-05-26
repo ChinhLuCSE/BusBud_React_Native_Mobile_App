@@ -199,13 +199,13 @@ export default function App() {
             keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
           >
           <Stack.Navigator>
-            {/* <Stack.Screen
+            <Stack.Screen
               name="SplashScreen"
               component={SplashScreen}
               options={{
                 headerShown: false,
               }}
-            /> */}
+            />
             <Stack.Screen
                 name="StartingScreen1"
                 component={StartingScreen1}

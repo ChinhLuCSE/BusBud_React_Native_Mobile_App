@@ -102,8 +102,8 @@ const HomeScreen = () => {
       </View>
       
       <View style={styles.body}>
-        <View style={styles.nav}>
-          <NavOptions />
+        <View style={[styles.nav,]}>
+          <NavOptions/>
           <Text style={styles.favorite}>Favorites</Text>
           <NavFavourites_HomeScreen />
         </View>
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 4,
     paddingTop: 20,
+    alignItems: 'center',
     // backgroundColor: 'yellow'
   },
   nav: {

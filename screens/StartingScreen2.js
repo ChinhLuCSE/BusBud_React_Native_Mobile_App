@@ -1,206 +1,147 @@
-import * as React from "react";
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import React, { useState } from 'react';
+
 import { Image } from "expo-image";
+import { StyleSheet, View, Pressable, Text, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Color, FontFamily, Border, FontSize } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
-const StartingScreen2 = () => {
+export default function StartingScreen2() {
   const navigation = useNavigation();
-
+  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (text) => {
+    setInputValue(text);
+  };
   return (
-    <View style={styles.startingScreen2}>
-      <View style={[styles.startingScreen2Child, styles.moveParentPosition]} />
-      <Pressable
-        style={[styles.startingScreen2Item, styles.byClickingOnLayout]}
-        onPress={() => navigation.navigate("StartingScreen4")}
-      />
-      <View style={[styles.moveParent, styles.moveParentPosition]}>
-        <Text style={[styles.move, styles.moveTypo]}>Move</Text>
-        <Text style={[styles.with, styles.moveTypo]}>with</Text>
-        <Text style={[styles.safety, styles.moveTypo]}>Safety</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('StartingScreen1')
+          }}
+        >
+          <Image
+            style={{ 
+              width: 30, 
+              height: 30,
+              marginTop: 20,
+              marginBottom: 20,
+            }}
+            // resizeMode="contain"
+            source={require("../assets/left-arrow.png")}
+          />
+        </TouchableOpacity>
+        <Text style={{
+          fontFamily: 'Lexend_semibold',
+          fontSize: 24,
+          color: Color.primary900,
+          paddingBottom: 30,
+        }}
+        >
+        Choose an account
+        </Text>
       </View>
-      <Text style={styles.next }>Next</Text>
-      <Text style={styles.chooseAnAccount}>Choose an account</Text>
-      <Text style={[styles.google, styles.googleTypo]}>Google</Text>
-      <Text style={[styles.facebook, styles.googleTypo]}>Facebook</Text>
-      <Text style={[styles.byClickingOn, styles.googleTypo]}>
-        By clicking on a social option you may recieve an SMS for verification.
-        Message and data rates may apply.
-      </Text>
-      <Pressable
-        style={styles.wrapper}
-        onPress={() => navigation.navigate("StartingScreen1")}
-      >
-        <Image
-          style={styles.icon}
-          contentFit="cover"
-          source={require("../assets/vector-5.png")}
-        />
-      </Pressable>
-      <Image
-        style={[styles.logosfacebookIcon, styles.logosfacebookIconLayout]}
-        contentFit="cover"
-        source={require("../assets/logosfacebook.png")}
-      />
-      <Image
-        style={[styles.flatColorIconsgoogle, styles.logosfacebookIconLayout]}
-        contentFit="cover"
-        source={require("../assets/flatcoloriconsgoogle.png")}
-      />
+      <View style={styles.body}>
+        <View style={{
+          flexDirection: 'column'
+        }}>
+          <TouchableOpacity style={styles.choosingContainer} onPress={() => {
+            navigation.navigate('StartingScreen4')
+          }}>
+            <Image 
+              style={styles.logo}
+              source={require('../assets/facebook.png')}
+            />
+            <Text style={styles.logoText}>Facebook</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.choosingContainer} onPress={() => {
+            navigation.navigate('StartingScreen4')
+          }}>
+          <Image 
+              style={styles.logo}
+              source={require('../assets/google.png')}
+            />
+            <Text style={styles.logoText}>Google</Text>
+          </TouchableOpacity>
+        </View>
+        <Text style={{
+          fontFamily: 'Lexend_semibold',
+          fontSize: 14,
+
+        }}>By clicking on a social option you may recieve an SMS for verification. Message and data rates may apply.</Text>
+      </View>
+      <View style={styles.footer}>
+          <TouchableOpacity style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: Color.primary700,
+            paddingTop: 10,
+            paddingBottom: 10,
+            borderRadius: 10,
+            marginBottom: 20,
+            shadowColor: 'black',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+             shadowOpacity: 0.9,
+             shadowRadius: 90,
+             elevation: 10,
+          }}
+          onPress={() => {
+            navigation.navigate('StartingScreen3', 123)
+          }}
+          >
+            <Text style={{
+              fontFamily: 'Lexend_semibold',
+              fontSize: 20,
+              color: Color.white,
+            }}>Next</Text>
+          </TouchableOpacity>
+      </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  moveParentPosition: {
-    left: 0,
-    width: 414,
-    position: "absolute",
-  },
-  byClickingOnLayout: {
-    width: 341,
-    left: 37,
-  },
-  moveTypo: {
-    height: 169,
-    textAlign: "left",
-    color: Color.white,
-    fontFamily: FontFamily.robotoBold,
-    fontWeight: "700",
-    fontSize: 144,
-    left: 0,
-    position: "absolute",
-  },
-  googleTypo: {
-    color: Color.gray900,
-    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
-    fontWeight: "600",
-    lineHeight: 28,
-    textAlign: "left",
-    position: "absolute",
-  },
-  logosfacebookIconLayout: {
-    height: 30,
-    width: 30,
-    position: "absolute",
-    overflow: "hidden",
-  },
-  startingScreen2Child: {
-    backgroundColor: Color.white,
-    width: 414,
-    top: 0,
-    height: 896,
-    left: 0,
-  },
-  startingScreen2Item: {
-    top: 750,
-    borderRadius: Border.br_3xs,
-    backgroundColor: Color.primary700,
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 4,
-    elevation: 4,
-    shadowOpacity: 1,
-    height: 58,
-    position: "absolute",
-  },
-  move: {
-    width: 356,
-    top: 0,
-  },
-  with: {
-    top: 136,
-    width: 273,
-  },
-  safety: {
-    top: 271,
-    width: 414,
-  },
-  moveParent: {
-    top: 288,
-    height: 440,
-    display: "none",
-    opacity: 0.3,
-    width: 414,
-  },
-  next: {
-    top: 765,
-    left: 179,
-    color: Color.aliceblue,
-    width: 55,
-    height: 25,
-    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
-    fontWeight: "600",
-    lineHeight: 28,
-    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
-    textAlign: "left",
-    position: "absolute",
-  },
-  chooseAnAccount: {
-    top: 131,
-    fontSize: FontSize.h31Header3128ptSemiBoldLexend_size,
-    color: Color.primary900,
-    width: 349,
-    height: 33,
-    fontFamily: FontFamily.h1Header136ptSemiBoldLexend,
-    fontWeight: "600",
-    lineHeight: 28,
-    textAlign: "left",
-    left: 37,
-    position: "absolute",
-  },
-  google: {
-    top: 249,
-    width: 97,
-    left: 127,
-    color: Color.gray900,
-    height: 33,
-    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
-  },
-  facebook: {
-    width: 107,
-    top: 196,
-    left: 127,
-    color: Color.gray900,
-    height: 33,
-    fontSize: FontSize.paragraph20ptSemiBoldLexend_size,
-  },
-  byClickingOn: {
-    top: 302,
-    fontSize: FontSize.hint14ptSemiBoldLexend_size,
-    height: 92,
-    width: 341,
-    left: 37,
-  },
-  icon: {
-    height: "100%",
-    width: "100%",
-  },
-  wrapper: {
-    left: 36,
-    top: 79,
-    width: 19,
-    height: 19,
-    position: "absolute",
-  },
-  logosfacebookIcon: {
-    left: 53,
-    top: 196,
-  },
-  flatColorIconsgoogle: {
-    top: 250,
-    left: 55,
-  },
-  startingScreen2: {
-    backgroundColor: Color.aliceblue,
+  container: {
     flex: 1,
-    overflow: "hidden",
-    height: 896,
-    width: "100%",
+    backgroundColor: Color.white,
+    padding: 20,
+    flexDirection: 'column',
+
   },
+  header: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    // backgroundColor: 'blue'
+  },
+  body: {
+    flex: 2,
+
+  },
+  choosingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  logo: {
+    width: 30,
+    height: 30,
+  },
+  logoText: {
+    fontFamily: 'Lexend_semibold',
+    fontSize: 20,
+    color: Color.black,
+    marginLeft: 40,
+    justifyContent: 'center',
+  },
+  footer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    flexDirection: 'column',
+  },
+  
+
 });
 
-export default StartingScreen2;
+

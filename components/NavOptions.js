@@ -92,6 +92,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   subContainer: {
     flex: 1,
@@ -99,6 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     alignItems: "center",
     justifyContent: "center",
+    // backgroundColor:'blue'
   },
   image: {
     flex: 10,
