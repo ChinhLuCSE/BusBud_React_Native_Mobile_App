@@ -14,7 +14,7 @@ export default function StartingScreen5() {
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('StartingScreen1')
+            navigation.navigate('StartingScreen4')
           }}
         >
           <Image
