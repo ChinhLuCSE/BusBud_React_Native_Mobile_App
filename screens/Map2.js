@@ -27,7 +27,7 @@ const Map2 = () => {
       </Pressable>
       <Pressable
         style={[styles.rectangleParent, styles.groupChildLayout]}
-        onPress={() => navigation.navigate("IPhone11ProMax9")}
+        onPress={() => navigation.navigate("HomeScreen")}
       >
         <View style={[styles.groupChild, styles.groupChildLayout]} />
         <Text style={styles.done}>Done</Text>

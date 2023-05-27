@@ -17,7 +17,7 @@ const Map1 = () => {
       </View>
       <Pressable
         style={styles.wrapper}
-        onPress={() => navigation.navigate("IPhone11ProMax9")}
+        onPress={() => navigation.navigate("HomeScreen")}
       >
         <Image
           style={styles.icon}

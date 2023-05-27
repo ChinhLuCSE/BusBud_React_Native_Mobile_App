@@ -182,6 +182,13 @@ export default function App() {
                 headerShown: false,
               }}
             />
+            <Stack.Screen
+              name="Map1"
+              component={Map1}
+              options={{
+                headerShown: false,
+              }}
+            />
             </Stack.Navigator>
           </KeyboardAvoidingView>
         </SafeAreaProvider>
