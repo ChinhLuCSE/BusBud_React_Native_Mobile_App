@@ -30,13 +30,13 @@ const MenuOverlay = () => {
           }}
           
         >
-          <View style={{}}>
-            <Image
-              style={{ width: 70, height: 70 }}
-              resizeMode="contain"
-              source={require("../assets/avatar-rounded.png")}
-            />
-          </View>
+
+          <Image
+            style={{ width: 70, height: 70 }}
+            resizeMode="contain"
+            source={require("../assets/avatar-rounded.png")}
+          />
+
           <View
             style={{
               justifyContent: "center",
