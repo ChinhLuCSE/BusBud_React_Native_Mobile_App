@@ -76,8 +76,8 @@ export default function SplashScreen() {
           alignItems: 'center',
         }}>
           <TouchableOpacity style={[{
-            width: width,
-            height: width,
+            width: 180,
+            height: 180,
             zIndex: 2,
             // display: isAnimated ? 'none' : 'flex',
           },styles.logo,]}

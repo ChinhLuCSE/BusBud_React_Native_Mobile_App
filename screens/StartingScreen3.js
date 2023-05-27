@@ -145,9 +145,9 @@ export default function StartingScreen3(phoneNumber) {
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: Color.primary700,
-            paddingTop: 10,
-            paddingBottom: 10,
-            borderRadius: 10,
+            paddingTop: 20,
+            paddingBottom: 20,
+            borderRadius: 20,
             marginBottom: 20,
             shadowColor: 'black',
             shadowOffset: {
